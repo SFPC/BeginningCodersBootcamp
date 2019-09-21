@@ -1,19 +1,13 @@
 # BeginningCodersBootcamp
 A one week program to introduce the foundations of coding to beginners by creating visual art and animations in openFrameworks.
 
-## Fall 2019 session, Monday September 23rd – Friday September 27th
-
-Instructors: [Matt Jacobson](http://iammattjacobson.com/) & [Robby Kraft](http://robbykraft.com/)
-
-Teaching Assistant: [Alex Miller](http://spacefiller.space/)
-
-Location: School for Poetic Computation | 155 Bank St, New York, NY 10014
-
-Class Time: 10am - 1pm
-
-Office Hours: Thursdays 2pm to 4pm (or by appointment)
-
-Class Notes: (link sent to enrolled students)
+## Fall 2019 session, Monday September 23rd – Friday September 27th  
+Instructors: [Matt Jacobson](http://iammattjacobson.com/) & [Robby Kraft](http://robbykraft.com/)  
+Teaching Assistant: [Alex Miller](http://spacefiller.space/)  
+Location: School for Poetic Computation | 155 Bank St, New York, NY 10014  
+Class Time: 10am - 1pm  
+Office Hours: Thursdays 2pm to 4pm (or by appointment)  
+Class Notes: (link sent to enrolled students)  
 
 School for Poetic Computation’s Bootcamp introduces the foundations of coding to beginners by creating visual art and animations in openFrameworks. This 5 day session will be open both to incoming SFPC students and anyone who wants to learn to code. 
 
