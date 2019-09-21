@@ -44,20 +44,20 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 - simple graphics drawing primitives
 - introduction to variables, computer memory, types, scope, and functions.
 
-## Day 2
+### Day 2
 - returning functions
 - openFrameworks utility methods, random numbers, time, math
 - principles of animation
 - control structures: branching and looping
 - event handlers: mouse and keyboard
 
-## Day 3
+### Day 3
 - container data structures
 - object-oriented design
 - classes, methods, properties, and states
 - ofPoint and other openFrameworks primitives
 
-## Day 4
+### Day 4
 - more openFrameworks object types: polylines, vectors, cameras
 - ofxAddons, community extensions to openFrameworks
 - transformations
@@ -65,7 +65,7 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
   - push, pop matrices
 - function recursion
 
-## Day 5
+### Day 5
 - C++ standard library types
 - reading and writing data
 - displaying images, playing audio, capturing video
