@@ -36,37 +36,48 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 
 
 ## Schedule
+
 ### Day 1
-- introduction to code as a medium for creation, different languages and their benefits.
-- introduction to Xcode/VisualStudio, Github, the openFrameworks ecosystem, and the C++ build system.
+
+- introductions, Robby, Matt, Alex
+- introduction to our tools: Xcode/VisualStudio, and openFrameworks.
 - C++ code syntax, OpenGL coordinate system
-- Processing, openFrameworks, Arduino design paradigm: setup() and draw()
+- Processing, openFrameworks, Arduino design paradigm: `setup()` and `draw()`
 - simple graphics drawing primitives
-- introduction to variables, computer memory, types, scope, and functions.
+- introduction to variables, computer memory, types, scope.
+- introduction to functions, abstracting and parameterizing.
 
 ### Day 2
-- returning functions
+
 - openFrameworks utility methods, random numbers, time, math
-- principles of animation
+- principles of animation, clearing screen, frame rate, difference between a loop and draw()
 - control structures: branching and looping
+- boolean expressions
+- Arithmetic, math functions, % operator
 - event handlers: mouse and keyboard
+- functions that return
 
 ### Day 3
-- container data structures
+
+- more functions
+- more control structures, loops, branching
+- introduction to container data structures
 - object-oriented design
 - classes, methods, properties, and states
-- ofPoint and other openFrameworks primitives
+- ofPoint and other openFrameworks primitive objects
 
 ### Day 4
+
+- 3D space
+- transformations
+    - rotate, translate scale
+    - push, pop matrices
 - more openFrameworks object types: polylines, vectors, cameras
 - ofxAddons, community extensions to openFrameworks
-- transformations
-  - rotate, translate scale
-  - push, pop matrices
-- function recursion
 
 ### Day 5
-- C++ standard library types
-- reading and writing data
-- displaying images, playing audio, capturing video
-- classwork and examples in other programming languages
+
+- media: displaying and manipulating images, playing audio, capturing video
+- ofEvent, scheduling
+- advanced container data structures, C++ standard library types
+- good programming design, wrap up course, compare C++ to other languages
