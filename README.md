@@ -34,7 +34,6 @@ Before the first day of class, you should try installing both an IDE and openFra
 
 Also, download openFrameworks for your given platform: http://openframeworks.cc/download/
 
-
 ## Schedule
 
 ### Day 1
@@ -62,22 +61,23 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 - more functions
 - more control structures, loops, branching
 - introduction to container data structures
-- object-oriented design
-- classes, methods, properties, and states
-- ofPoint and other openFrameworks primitive objects
+- using loops with arrays
+- more openFrameworks primitive objects: ofPoint, polylines, and others
 
 ### Day 4
 
+- object-oriented design
+- classes, methods, properties, and states
 - 3D space
-- transformations
-    - rotate, translate scale
+    - transformations: rotate, translate, scale
     - push, pop matrices
-- more openFrameworks object types: polylines, vectors, cameras
+    - cameras
 - ofxAddons, community extensions to openFrameworks
 
 ### Day 5
 
-- media: displaying and manipulating images, playing audio, capturing video
+- media: playing with images, audio, video
 - ofEvent, scheduling
+- ofxGui
 - advanced container data structures, C++ standard library types
-- good programming design, wrap up course, compare C++ to other languages
+- good programming design, wrap up course, reference other languages
