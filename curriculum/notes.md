@@ -151,12 +151,7 @@ Bootcamp
 - More focus on syntax. Ex: variable declaration (doesn't need to be called x)
 - mental model of the execution thread
 - scope
-
-- "people who have coded before in the past"
-- "has anyone used processing" 
-- if statement - "has anyone heard of this before"
-- use debugger?
-- easing is a hard example to introduce a function with. it's using state, parameters AND return values all at once.
+- returns are not motivated 
 
 ###
 

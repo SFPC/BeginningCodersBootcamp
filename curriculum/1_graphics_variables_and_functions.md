@@ -202,7 +202,7 @@ We broke this exercise down into smaller parts.
 
 TODO: Give solution code
 
-## Homework: Generalize your letter function
+## Homework 1: Generalize your letter function (2 hours)
 
 TODO: 
 
