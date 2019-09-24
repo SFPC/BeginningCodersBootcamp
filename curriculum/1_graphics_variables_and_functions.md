@@ -1,7 +1,9 @@
+TODO: reformat headings in lecture section 
+
 # Day 1: Graphics, variables & functions
 
-- *Lecture time:* 3 hours
-- *Homework time:* 2 hours
+- **Lecture time:** 3 hours
+- **Homework time:** 2 hours
 
 ## Learning outcomes
 
