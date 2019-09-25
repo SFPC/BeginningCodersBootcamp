@@ -1,4 +1,4 @@
-TODO: reformat headings in lecture section 
+TODO: reformat headings in lecture section
 
 # Day 1: Graphics, variables & functions
 
@@ -212,19 +212,19 @@ TODO:
 
 ## Common misconceptions & questions
 
--   *Does the order of lines matter?*
+-   **Does the order of lines matter?**
 
     Most of the time, yes. Lines of code inside of a function are run sequentially, one right after the other. However, sometimes the order of code doesn't matter. For example, when you're defining a new function, it doesn't matter where you put the function.
 
--   *I'm confused by all the numbers in code like `ofDrawRectangle(20, 30, 60, 40)`!*
+-   **I'm confused by all the numbers in code like `ofDrawRectangle(20, 30, 60, 40)`!**
 
     This list of numbers tells `ofDrawRectangle` exactly what sort of rectangle you want to draw. The order of the numbers is _very important_. The first two numbers are the (x, y) position of the top-left corner of the rectangle (in the above example, (20, 30)), and the second two numbers are the width and height (in this example, a width of 60 and a height of 40). _Every function interprets the numbers you pass into it in a specific way._ `ofDrawRectangle` is different from `ofDrawCircle`, for example. If you forget which order the numbers go in, you can refer to the openFrameworks documentation. (These numbers are technically called _arguments_, although students don't often refer to them as such at this point.)
 
--   *How does the coordinate system of the window work?*
+-   **How does the coordinate system of the window work?**
 
     The top left corner of the window is the origin, or point (0, 0). As you move to the right, you increase the x-coordinate. So point (100, 0) is 100 pixels to the right of the origin, but still at the top of the window. As you move downwards, you increase the y-coordinate. So (0, 100) is 100 pixels _below_ the origin, but against the left-hand side of the window. Note that the y-axis is flipped relative to the standard x/y coordinates you may be familiar with from math class.
 
--   *Can I change the width and height of the window?*
+-   **Can I change the width and height of the window?**
 
     Yes, you can do this by changing the following line in `main.cpp`:
 
@@ -234,27 +234,6 @@ TODO:
 
     Change `1024` to whatever width you want, and `768` to whatever height you want.
 
--   *I get an error that says "Expected ';' after expression"*
+-   **I get an error that says "Expected ';' after expression"**
 
     Almost every line in C++ ends with a semi-colon. This is an important piece of coding syntax.
-
-## Student Reflections, Takeaways & Next Steps
-Additional materials for the students to leave with that can help them dig deeper into the subject or additional exercises and challenges to help students progress their knowledge to the next level and gain mastery of the subject through independent study.
-
-* Multiple Project Exit Points: an idea of high-medium-low projects so students are locked into one end product.
-  * First Steps - a simple exercise
-  * Next Steps - medium exercise
-  * Big Steps - a challenge or open ended study
-* Presentation: how might students share their work? With peers, outside world? What media or platforms could/should be referenced to students to encourage sharing (Instagram, Tumblr...)? 
-* Reflection: reflection questions that ask students to think about CS concepts and practices. How can students express what they’ve learned in some creative way?
-
-## Post Session
-
-### References
-Include any sources cited, but not directly linked in the unit.
-
-### Implementation Guidance & Teaching Reflection  
-e.g. Please provide some guidance based on experience delivering the unit and potential modifications might you are considering making for future iterations of this unit. This is an opportunity for you as the unit author to give teachers practical guidance.
-
-***With thanks and acknowledgement, we were inspired by the curriculum templates shared by [NYCDOE](http://blueprint.cs4all.nyc/units/40/) and [NYC Open Data](https://github.com/datapolitan/Data_Analytics_Classes/blob/gh-pages/Excel_Tools_Summarizing_Data.md)***
-

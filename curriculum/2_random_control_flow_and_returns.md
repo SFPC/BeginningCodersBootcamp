@@ -536,7 +536,7 @@ void ofApp::draw() {
 }
 ```
 
-This code produces the following image;
+This code produces the following image:
 
 ![a grid of circles](grid.png)
 
@@ -885,7 +885,7 @@ void ofApp::draw() {
 
 ## Common misconceptions & questions
 
--   *How does returning values work?*
+-   **How does returning values work?**
 
     The important thing to understand about `return` is it allows one function to send an output to another function. Here's a good way to think about it. Let's say we have a function called `returnsFive` that returns the number 5:
 
@@ -913,7 +913,7 @@ void ofApp::draw() {
 
     So in this case, the value 5 is assigned to `myValue`. This technique of mentally replacing a function call with its return value is useful for understanding how function "send back" return values into another function.
 
--   *Assigning to variables*
+-   **Assigning to variables**
     
     This is often confusing for students:
 
@@ -934,7 +934,7 @@ void ofApp::draw() {
 
     ```
 
--   *Why does changing the color cause the color of things to change at the top of `draw`?*
+-   **Why does changing the color cause the color of things to change at the top of `draw`?**
     
     Here's an example that causes this question to arise:
 
@@ -954,7 +954,7 @@ void ofApp::draw() {
 
     Both the line and the circle will have the same color in this case. Why is that? Because the call to `ofSetColor` sets the state of openFrameworks, and this state persists across draws. In other words, at the end of the draw function, the draw function starts again, and the color carries over from the past draw function.
 
--   *Error: Function definition is now allowed here*
+-   **Error: Function definition is now allowed here**
 
     This often means you're missing closing curly braces. For example:
 

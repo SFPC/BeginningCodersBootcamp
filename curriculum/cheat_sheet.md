@@ -48,3 +48,5 @@
 - for loop
 - ofGetFrameNum()
 - for loops
+- while loops
+- introduce arrays before object?

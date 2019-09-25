@@ -157,6 +157,9 @@ Bootcamp
 - if statement - "has anyone heard of this before"
 - use debugger?
 - easing is a hard example to introduce a function with. it's using state, parameters AND return values all at once.
+- introduce arrays before object?
+- bag isn't good analogy for array. list is better.
+- "has anyone heard of array before?"
 
 ###
 
