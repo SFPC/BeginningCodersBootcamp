@@ -83,11 +83,11 @@ What if we want to add some padding to the line, so it doesn't go _all_ the way 
 
 ```cpp
 void ofApp::draw() {
-    ofDrawLine(10, 10, 1024 - 10, 768 - 10);
+    ofDrawLine(10, 10, 1024 - 20, 768 - 20);
 }
 ```
 
-*Important*: we can put math, like `1024 - 10`, inside our call to `ofDrawLine`.
+*Important*: we can put math, like `1024 - 20`, inside our call to `ofDrawLine`.
 
 ## More basic graphics & painter's algorithm
 
@@ -96,7 +96,7 @@ We introduced comments (lines beginning with `//`) as an important tool for "wri
 ```cpp
 void ofApp::draw() {
     // The following code draws a line!
-    ofDrawLine(10, 10, 1024 - 10, 768 - 10);
+    ofDrawLine(10, 10, 1024 - 20, 768 - 20);
 }
 ```
 
@@ -114,7 +114,7 @@ The call to `ofBackground` must come before `ofDrawLine`:
 ```cpp
 void ofApp::draw() {
     ofBackground(255, 0, 255);
-    ofDrawLine(10, 10, 1024 - 10, 768 - 10);
+    ofDrawLine(10, 10, 1024 - 20, 768 - 20);
 }
 ```
 
@@ -123,7 +123,7 @@ If the lines are switched, then the call to `ofBackground` overwrites the line t
 ```cpp
 void ofApp::draw() {
     // This renders a blank screen with no line
-    ofDrawLine(10, 10, 1024 - 10, 768 - 10);
+    ofDrawLine(10, 10, 1024 - 20, 768 - 20);
     ofBackground(255, 0, 255);
 }
 ```
