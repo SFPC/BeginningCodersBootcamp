@@ -420,7 +420,7 @@ cout << myPoint.x << endl;
 cout << myPoint.y << endl;
 ```
 
-The `ofPoint` type is useful for cleaning up the earlier mouse interaction (TODO: link) example we did before.
+The `ofPoint` type is useful for cleaning up the earlier [mouse interaction example](#mouse-interaction) we did previously.
 
 `ofApp.cpp`:
 
