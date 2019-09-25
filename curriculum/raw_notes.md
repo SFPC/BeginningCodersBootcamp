@@ -164,6 +164,10 @@ Bootcamp
 - drawing vector example is not motivated well. it's the same as before.
 - when giving homework, dont say "maybe we can bah blah". homework should be well defined, written down, and confidently stated
 
+- wish we had a "picture vocabulary" for memory (variables are boxes, arrays are stacks of boxes)
+
+- more questions for students. "turn to the person next to you and tell them what you think" or "try doing this task with the person next to you"
+
 ###
 
 - Survey

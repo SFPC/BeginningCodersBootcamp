@@ -8,7 +8,7 @@
 - Review variables
   - Life cycle of variable
   - Variable types
-  - Variables in functions vs. `.h` file
+  - Variables in functions vs. variables in `.h` file
 - Review functions
   - What is a function?
   - Parameters
@@ -41,7 +41,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
     myVariable = 3.14;
     ```
 
-4.  And these?
+4.  And this?
 
     ```
     float myVariable = 3.14;
@@ -58,7 +58,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
 
 7.  What do these lines do?
     
-    ```
+    ```cpp
     float x = 3.14;
     int y = x;
     ```
@@ -88,7 +88,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
 
 10. What is the result of `wholepart`?
 
-    ```
+    ```cpp
     float variable = 3.14;
     int wholepart = sqrt(abs(variable) * 3) + variable;
     ```
@@ -159,20 +159,20 @@ Consider the following questions. Some of these we haven't covered yet explicitl
 
 2.  The simplest type of function is one that doesn't have any parameters and doesn't have any return value. How do you add such a function to your program?
 
-3.  You can also write a function that returns output. Write a function called thinkOfANumber() that returns a random `int` between 1 - 10.
+3.  You can also write a function that returns output. Write a function called `thinkOfANumber()` that returns a random `int` between 1 - 10.
 
 4.  Now modify the `thinkOfANumber` to add a parameter called `high` that determines an inclusive upper bound for the random numbers.
 
 #### Exercise 2: Solutions
 
-1.  A bit of code that you can write and stash away for later, to be called whenever you want. It also can also optionally accept input and return output.
+1.  A bit of code that you can write and stash away for later, to be called whenever you want. It also can also optionally accept input (_parameters_) and produce output (_return values_).
 
 2.  `ofApp.h`:
 
     ```cpp
     class ofApp : public ofBaseApp{
       public:
-        // functions not shown
+        // other functions not shown
         void myFunction();
     }
     ```
@@ -190,7 +190,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
     ```cpp
     class ofApp : public ofBaseApp{
       public:
-        // functions not shown
+        // other functions not shown
         int thinkOfANumber();
     }
     ```
@@ -215,7 +215,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
     ```cpp
     class ofApp : public ofBaseApp{
       public:
-        // functions not shown
+        // other functions not shown
         int thinkOfANumber();
     }
     ```
@@ -242,7 +242,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
 
 ### Mouse interaction
 
-Now we're going to create "drawing program" with a little more sophisticated mouse interaction. First, let's create a circle that follows the mouse:
+Now we're going to create a "drawing program" with a little more sophisticated mouse interaction. First, let's create a circle that follows the mouse:
 
 `ofApp.cpp`:
 
@@ -257,7 +257,9 @@ void ofApp::draw() {
 }
 ```
 
-This leaves at trail of circles on the canvas, which is cool! However, the circles are disconnected. We want to draw a line that connects each circle. We can do this by every frame drawing a line from the _current_ mouse (x, y) to the _previous_ mouse (x, y). In order to remember the mouse's last position, introduce new variables to the `.h` file:
+This leaves a trail of circles on the canvas, which is cool. It leaves a trail because of our call to `ofSetBackgroundAuto(0);`, which tells openFrameworks not to overwrite the window with a background color every frame.
+
+However, the circles are disconnected. We want to draw a line that connects each circle. We can do this by every frame drawing a line from the _current_ mouse (x, y) to the _previous_ mouse (x, y). In order to remember the mouse's last position, introduce new variables to the `.h` file:
 
 ```cpp
 class ofApp : public ofBaseApp{
@@ -280,7 +282,7 @@ void ofApp::draw() {
 }
 ```
 
-This draws a line from the previous mouse position to the current mouse position, and then updates the previous position for the next frame.
+This draws a line from the previous mouse position to the current mouse position, and then updates the previous position for the next frame. Now our circles are connected.
 
 What happens if we update the `lastPosition` variables _before_ the `ofDrawLine` call, like below?
 
@@ -316,6 +318,8 @@ while (i < 10) { // condition
 ```
 
 You can see that there's a similar pattern to a for loop, where we initialize a looping variable and then update it. It's a different way of expressing the same concept. A while loop always has three parts: initialization, condition and update.
+
+We won't be using while loops anymore today, but good to mention in case students see it in the future.
 
 ### Drawing with for loops
 
@@ -461,6 +465,8 @@ void ofApp::draw() {
 
 This allows us to group conceptually related variables into a single container. `ofPoint` is a container provided to us by openFrameworks for storing coordinates (x and y), but there are lots of other types of objects that we can use to group related variables.
 
+**Question for class:** Can you think of real world examples that you might want to model using objects?
+
 ### Arrays and vectors
 
 There's another way to group related variables together in C++: using an array. An array is similar to an object in that it stores variables inside of it. However, it has a core difference: an array is used to store a _list_ of variables. Here's how we declare an array:
@@ -488,6 +494,8 @@ cout << myArray[0] << endl;
 
 One limitation of arrays is that they have a fixed size. In the above example, we declared an array of size 100 — that means there are 100 spots in the array that we can access. There's another related structure in C++ that has a variable size: a **vector**.
 
+**Question for class:** Can you think of real world examples that you might want to model using arrays?
+
 ### Vectors
 
 To declare a vector:
@@ -508,7 +516,7 @@ myVector.push_back(100);
 myVector.push_back(32);
 ```
 
-This `.push_back(...)` syntax allows us to append values to our vector. Every time we call `push_back`, we're adding a value to the end of the list. After we call it 4 times, our vector has 4 items inside of it. To access those items, we use the same syntax as arrays:
+This `.push_back(...)` syntax allows us to append values to our vector. Every time we call `push_back`, we're adding a value to the end of the list. This is the primary difference between arrays and vectors: an array has a fixed size, and a vector has a flexible size. After we call `push_back` 4 times, our vector has 4 items inside of it. To access those items, we use the same syntax as arrays:
 
 ```cpp
 cout << myVector[0] << endl;
@@ -551,7 +559,7 @@ This syntax is a little new. When we call `ofPoint(5, 2)`, we're constructing a 
 
 ### Drawing with vectors
 
-Vectors are very useful for creative coding, because they allow us to remember an arbitrary large number of values. For example, we can use a vector to store all of the previous mouse positions. Add this to your `.h` file:
+Vectors are very useful for creative coding, because they allow us to remember an arbitrarily large number of values. For example, we can use a vector to store all of the previous mouse positions. Add this to your `.h` file:
 
 ```cpp
 class ofApp : public ofBaseApp{
@@ -603,7 +611,7 @@ void ofApp::draw() {
 }
 ```
 
-This loops through our `previousPoints` vector, and for each point, draws a line from the previous point (at position `i - 1`) to the current point (at `i`). In this way, a line is drawn between successive pairs of points. There's a subtle bug in our loop, though. Even though this _mostly_ works, we might see weird artifacts sometimes — a line drawn in a way we don't expect. To understand why this happens, consider the case when `i = 0`. In this case, `i - 1 = -1`. If we try to access `previousPoints[-1].x;`, it's not clear what this means. What is a negative index? Even though the program runs, this code is nonsensical — we could get an `x` value back that we don't expect.
+This loops through our `previousPoints` vector, and for each point, draws a line from the previous point (at position `i - 1`) to the current point (at `i`). In this way, a line is drawn between successive pairs of points. There's a subtle bug in our loop, though. Even though this _mostly_ works, we might see weird artifacts sometimes — a line drawn in a way we don't expect. To understand why this happens, consider the case when `i = 0`. In this case, `i - 1 = -1`. If we try to access `previousPoints[-1].x;`, it's not clear what this means. What is a negative index? Even though the program runs, this code is nonsensical — we could get an `x` value back that we don't expect. **An important rule of thumb**: never use indices outside the bounds of the vector (i.e. negative values or values larger than the vector). This rule applies to arrays as well.
 
 The solution to this subtle problem is to change the bounds of our loop so that we never access index `-1`. Let's start our loop at `i = 1` rather than `i = 0`:
 
@@ -623,7 +631,6 @@ void ofApp::draw() {
 ```
 
 One thing we can do with vectors is _remove_ elements of the list. We can use this to achieve interesting effects when drawing our mouse history. For example, after we add more than 100 positions to our vector, let's remove the first point of the vector every frame:
-
 
 ```cpp
 void ofApp::draw() {
@@ -650,8 +657,68 @@ The line `previousPoints.erase(previousPoints.begin());` removes the first eleme
 
 Using a vector of ofPoints, create a program that simulates falling rain. The rain can be rendered however you want (ex. circles). The circles should start at the top of the screen at random positions and fall to the bottom. When the rain drops hit the bottom of the window, they should be removed from the vector.
 
+![gif of falling rain](rain.gif)
+
 ### Solution
 
+`ofApp.h`:
+
+```cpp
+#pragma once
+
+#include "ofMain.h"
+
+class ofApp : public ofBaseApp{
+  
+public:
+  void setup();
+  void update();
+  void draw();
+  
+  void keyPressed(int key);
+  void keyReleased(int key);
+  void mouseMoved(int x, int y );
+  void mouseDragged(int x, int y, int button);
+  void mousePressed(int x, int y, int button);
+  void mouseReleased(int x, int y, int button);
+  void mouseEntered(int x, int y);
+  void mouseExited(int x, int y);
+  void windowResized(int w, int h);
+  void dragEvent(ofDragInfo dragInfo);
+  void gotMessage(ofMessage msg);
+  
+  vector<ofPoint> rain;
+};
+```
+
+`ofApp.cpp`:
+
+```cpp
+#include "ofApp.h"
+
+void ofApp::setup() {
+  for (int i = 0; i < 100; i = i + 1) {
+    rain.push_back(ofPoint(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())));
+  }
+}
+
+void ofApp::draw() {
+  ofBackground(0);
+
+  for (int i = 0; i < rain.size(); i = i + 1) {
+    rain[i].y = rain[i].y + 10;
+    
+    if (rain[i].y > ofGetHeight()) {
+      rain[i].y = 0;
+    }
+    
+    ofSetColor(0, 0, 255);
+    ofDrawCircle(rain[i].x, rain[i].y, 10);
+  }
+}
+
+// other functions not shown
+```
 
 ## Vocabulary
 
