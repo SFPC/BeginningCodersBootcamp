@@ -1,9 +1,22 @@
-# Day 3: Review of variables
+# Day 3: Review, object, arrays and vectors
 
 - **Lecture time:** 3 hours
 - **Homework time:** 2 hours
 
 ## Learning outcomes
+
+- Review variables
+  - Life cycle of variable
+  - Variable types
+  - Variables in functions vs. `.h` file
+- Review functions
+  - What is a function?
+  - Parameters
+  - Return values
+- Introduce C++ objects as containers for groups of variables
+- While loops
+- Arrays
+- Vectors
 
 ## Lecture (3 hours)
 
@@ -82,12 +95,11 @@ Consider the following questions. Some of these we haven't covered yet explicitl
 
 #### Exercise 1 solutions
 
-1.  What are the 4 different steps of a variable's life cycle?
-    
+1.  
     1.  Declaration
     2.  Assignment
-    3.  Using
-    4.  Death
+    3.  Using the variable
+    4.  Death of variable
 
 2.  This declares a variable called `myVariable`. The type of the variable is a `float`, which can store decimal numbers.
 
@@ -103,26 +115,59 @@ Consider the following questions. Some of these we haven't covered yet explicitl
 
 8.  Putting a variable in a function means the variable lives for the lifetime of the function. Putting a variable in the `.h` file means it persists for the lifetime of the program.
 
-9.  You usually want to avoid this. TODO: continue
+9.  You usually want to avoid this. The version of the variable in the function will be used, and the version of the variable in the `.h` file will not be used. This is a confusing subtlety that is best avoided. Don't name your variables the same thing.
 
-// TODO: answers for below
+10. Let's solve this by thinking like a computer, step-by-step. First, we plug in `variable` to the right side of the `=`:
 
-10. What is the result of `wholepart`?
-
+    ```cpp
+    int wholepart = sqrt(abs(3.14) * 3) + 3.14;
     ```
-    float variable = 3.14;
-    int wholepart = sqrt(abs(variable) * 3) + variable;
+
+    Then we apply the `abs()` (abs gives us mathematical absolute value):
+
+    ```cpp
+    int wholepart = sqrt(3.14 * 3) + 3.14;
+    ```
+
+    Now multiply:
+
+    ```cpp
+    int wholepart = sqrt(9.42) + 3.14;
+    ```
+
+    Apply `sqrt`:
+
+    ```cpp
+    int wholepart = 3.0692018506 + 3.14;
+    ```
+
+    Add the two numbers:
+
+    ```cpp
+    int wholepart = 6.2092018506;
+    ```
+
+    We have a decimal number on the right hand side, but we're storing it in an integer. C++ will truncate (chop off the decimal part) of the number before storing it. So our final value will be:
+
+    ```cpp
+    int wholepart = 6;
     ```
 
 ### Exercise 2: Function review
 
-1.  What's a good way to think of a function?
-
-    A bit of code that you can write and stash away for later, to be called whenever you want. It also can also optionally accept input and return output.
+1.  Describe a function. What is a function's purpose?
 
 2.  The simplest type of function is one that doesn't have any parameters and doesn't have any return value. How do you add such a function to your program?
-  
-    `ofApp.h`:
+
+3.  You can also write a function that returns output. Write a function called thinkOfANumber() that returns a random `int` between 1 - 10.
+
+4.  Now modify the `thinkOfANumber` to add a parameter called `high` that determines an inclusive upper bound for the random numbers.
+
+#### Exercise 2: Solutions
+
+1.  A bit of code that you can write and stash away for later, to be called whenever you want. It also can also optionally accept input and return output.
+
+2.  `ofApp.h`:
 
     ```cpp
     class ofApp : public ofBaseApp{
@@ -140,9 +185,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
     }
     ```
 
-3.  You can also write a function that returns output. Write a function called thinkOfANumber() that returns a random `int` between 1 - 10.
-
-    `ofApp.h`:
+3.  `ofApp.h`:
 
     ```cpp
     class ofApp : public ofBaseApp{
@@ -167,9 +210,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
     }
     ```
 
-4.  Now modify the `thinkOfANumber` to add a parameter called `high` that determines an inclusive upper bound for the random numbers.
-
-       `ofApp.h`:
+4.  `ofApp.h`:
 
     ```cpp
     class ofApp : public ofBaseApp{
@@ -198,7 +239,6 @@ Consider the following questions. Some of these we haven't covered yet explicitl
       cout << thinkOfANumber(1000) << endl;
     }
     ```
-
 
 ### Mouse interaction
 
@@ -242,6 +282,18 @@ void ofApp::draw() {
 
 This draws a line from the previous mouse position to the current mouse position, and then updates the previous position for the next frame.
 
+What happens if we update the `lastPosition` variables _before_ the `ofDrawLine` call, like below?
+
+```cpp
+void ofApp::draw() {
+  lastPositionX = mouseX;
+  lastPositionY = mouseY;
+
+  ofDrawLine(lastPositionX, lastPositionY, mouseX, mouseY);
+}
+```
+
+Does this work? Why or why not?
 
 ### An aside: while loops
 
