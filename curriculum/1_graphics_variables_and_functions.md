@@ -58,18 +58,18 @@ void ofApp::draw(){
 
 This is where all of the code that draws to the screen will go.
 
-## Basic graphics
+### Basic graphics
 
 Next, we covered the following basic drawing concepts in openFrameworks:
 
 -   The coordinate system in openFrameworks has a reversed y-axis from what we're used to. Moving _down_ the screen means _larger_ y values.
 -   `ofDrawLine(x1, y1, x2, y2)` can be used to draw a line from starting point (x1, y1) to ending point (x2, y2).
 
-## Exercise 1: Draw a diagonal line
+### Exercise 1: Draw a diagonal line
 
 Draw a line from the top-left corner of the window to the bottom-right corner right corner. Remember that if we want to get the width and height of the window, we can take a look inside of `main.cpp`.
 
-### Solution
+#### Exercise 1 solution
 
 Modify the `draw` function in `ofApp.cpp`:
 
@@ -89,7 +89,7 @@ void ofApp::draw() {
 
 *Important*: we can put math, like `1024 - 10`, inside our call to `ofDrawLine`.
 
-## More basic graphics & painter's algorithm
+### More basic graphics & painter's algorithm
 
 We introduced comments (lines beginning with `//`) as an important tool for "writing a letter to yourself in code." Example:
 
@@ -148,11 +148,11 @@ void ofApp::draw() {
 }
 ```
 
-## Exercise 2: Draw your name
+### Exercise 2: Draw your name
 
 Using openFrameworks primitives (lines, circles and rectangles), draw your name in the `draw` function.
 
-### Solution
+#### Exercise 2 solution
 
 Here's an example for the name "ALEX":
 
@@ -185,16 +185,124 @@ This yields the following picture:
 
 ![ALEX drawn with openFrameworks](name.png)
 
+### Variables
 
-## Variables, functions and parameters
+One of the main things a computer can do is _remember information_. You've probably heard of the term "computer memory" — this is what the computer uses to remember. Programming languages like C++ will always offer a mechanism to use computer memory; in C++ this mechanism is called a **variable**.
 
-- TODO: Variables
-- TODO: Types
-- TODO: mouseX / mouseY
-- TODO: defining functions
+A variable is like a box that you can put a piece of information inside. The information inside of the box can be recalled later. There are two core parts of each variable:
+
+1. The name that you can use to access it (in the box analogy, this is like labeling the outside of the box with a sharpie to remind yourself what the box is for)
+2. The type of the variable. A variable can store any time of information, but we must tell the computer what type of information is going to go inside of it. The box analogy breaks down here, but we can imagine that we have different types of boxes for storing different types of contents.
+
+One of the simplest types of variables is one that stores a number. Here's how we create that:
+
+```cpp
+int myNumber;
+```
+
+The `int` here is the _type_ of the variable. `int` stands for "integer", and it tells the computer that we're going to store integers in our variable. Integers are any whole numbers (including negative numbers), like 5, 2, 9999, or -345.
+
+`myNumber` is the _name_ of the variable. We can choose whatever name we want here. Anytime in the future that we want to refer to this variable, we'll identify it using this name.
+
+If we want to assign our variable to a value, we use the following syntax:
+
+```cpp
+int myNumber;
+myNumber = 5;
+```
+
+This stores the value `5` inside of `myNumber`. Think about putting the number 5 in a box. If we want to retrieve this number, we can use it in our program in place of where we would normally put a number. For example, to draw a line:
+
+```cpp
+int myNumber;
+myNumber = 5;
+
+ofDrawLine(myNumber, 10, 100, 200);
+```
+
+`5` will be inserted in place of `myNumber` when we run the program.
+
+There are many other types of variables, and we won't cover them all in this class. The two most important types for creative coding are `int` and `float`. A `float` also stores a number, but it can store a _decimal number_ in addition to whole numbers. For example, you could use a `float` to store temperature (98.6) or time (3.4 seconds). To declare a `float`:
+
+```cpp
+float myNumber;
+myNumber = 3.13;
+ofDrawCircle(10, 10, myNumber);
+```
+
+### Removing redundancy using variables
+
+Let's take a look back at [exercise 2](#Exercise-2:-Draw-your-name). We're going to modify this example. Rather than drawing your entire name, let's draw the first letter of your name _twice_:
+
+![A drawn twice](a_twice.png)
+
+If we want to draw the second A to the right of the first A, we need to add some offset to all of our x-coordinates:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  // A
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+  
+  // A again
+  ofDrawLine(20 + 300, 200, 150 + 300, 20);
+  ofDrawLine(150 + 300, 20, 280 + 300, 200);
+  ofDrawLine(90 + 300, 100, 210 + 300, 100);
+}
+```
+
+I've shifted over the second A by 300 pixels to the right. As you can see, I've had to write `+ 300` many times in the code for my second A. Programmers hate redundancy — it makes them VERY upset. What if we wanted to adjust this 300 number by changing it to 400? We'd have to go through and replace every instance of 300 with 400, which is tedious.
+
+Instead, let's save this 300 value to a variable, and then use the variable in place of the number:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  // A
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+  
+  // A again
+  float offset = 300;
+  ofDrawLine(20 + offset, 200, 150 + offset, 20);
+  ofDrawLine(150 + offset, 20, 280 + offset, 200);
+  ofDrawLine(90 + offset, 100, 210 + offset, 100);
+}
+```
+
+Now the value 300 only appears in one place, and is easy to change! This is a common use of variables: to reduce redundancy.
+
+### An aside: mouse position
+
+There are special built in variables to openFrameworks that allow you to access the position of the mouse. These are called `mouseX` and `mouseY`. For example, if you want to draw a circle at the position of the mouse:
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  ofDrawCircle(mouseX, mouseY, 10);
+}
+```
+
+### Functions
+
+We discussed how to use variables to reduce redundancy. But if we look at our code to draw an A twice, we might sense that there is still quite a bit of redundancy. We have three lines of code that are almost the same repeated twice. If we find ourselves repeating code often, we should put this code inside of a function.
+
+A **function** is a section of code that we can save and run at anytime. Just like variables store data, functions store code.
+
+Writing a function is a two step process in C++. First, we must write the **function header** in the `ofApp.h` file. Modify `ofApp.h` to look like this:
+
+// TODO: function header
+
+### Parameters
+
 - TODO: parameters
 
-## Exercise 3: Write a function to draw a letter
+### Exercise 3: Write a function to draw a letter
 
 We broke this exercise down into smaller parts.
 

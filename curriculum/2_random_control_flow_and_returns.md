@@ -337,7 +337,7 @@ if (x > ofGetWidth()) {
 
 Modify the random walk example so that the circle will stay within the bounds of the window. We've already written one if statement above to keep the circle from going off the right hand side of the window. Now we must write more if statements to prevent it from going off the other edges.
 
-#### Exercise 1 solution:
+#### Exercise 1 solution
 
 
 `ofApp.h`:
@@ -574,11 +574,13 @@ void ofApp::draw() {
 
 Now you should see the circle moving from left to right and back again! `sin` is very useful in creative coding because it repeats for infinity as you plug larger and larger values into it.
 
+// TODO: rewrite this exercise to be a big bigger
+
 ### Exercise 2: Use sin to animate a circle
 
 Building off the example above, let's say we want our circle to move from the far left hand side of the window to the far right hand side. What should we multiply our `sin` function by to get that effect?
 
-#### Exercise 2 solution:
+#### Exercise 2 solution
 
 ```cpp
 void ofApp::draw() {
@@ -879,7 +881,6 @@ void ofApp::draw() {
 
 // other functions not shown
 ```
-
 
 ## Vocabulary
 
