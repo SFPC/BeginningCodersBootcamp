@@ -161,6 +161,9 @@ Bootcamp
 - bag isn't good analogy for array. list is better.
 - "has anyone heard of array before?"
 
+- drawing vector example is not motivated well. it's the same as before.
+- when giving homework, dont say "maybe we can bah blah". homework should be well defined, written down, and confidently stated
+
 ###
 
 - Survey

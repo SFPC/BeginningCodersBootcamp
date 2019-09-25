@@ -1,4 +1,4 @@
-# Day 3: Review day
+# Day 3: Review of variables
 
 - **Lecture time:** 3 hours
 - **Homework time:** 2 hours
@@ -113,7 +113,6 @@ Consider the following questions. Some of these we haven't covered yet explicitl
     float variable = 3.14;
     int wholepart = sqrt(abs(variable) * 3) + variable;
     ```
-
 
 ### Exercise 2: Function review
 
@@ -350,8 +349,15 @@ myPoint.x = 50;
 myPoint.y = 100;
 ```
 
-Here we declare a new `ofPoint` object, and then set the x and y values _inside_ of the object. We're introducing **dot notation** syntax. The dot (`.`) after `myPoint` allows us to access variables that are inside of the `myPoint` object. Now we can use those variables just like we would a normal variable:
+Here we declare a new `ofPoint` object, and then set the x and y values _inside_ of the object. We're introducing **dot notation** syntax. The dot (`.`) after `myPoint` allows us to access variables that are inside of the `myPoint` object. There's another syntax for storing values in the object:
 
+```cpp
+ofPoint myPoint(50, 100);
+```
+
+This does the same thing, but is more compact.
+
+Now we can use those variables just like we would a normal variable:
 
 ```cpp
 ofPoint myPoint;
@@ -489,17 +495,117 @@ myVector.push_back(ofPoint(50, 12));
 myVector.push_back(ofPoint(999, 4));
 ```
 
+This syntax is a little new. When we call `ofPoint(5, 2)`, we're constructing a new point. Then we write `myVector.push_back(ofPoint(5, 2));`, we're adding a new point to the end of the vector.
+
 ### Drawing with vectors
 
 Vectors are very useful for creative coding, because they allow us to remember an arbitrary large number of values. For example, we can use a vector to store all of the previous mouse positions. Add this to your `.h` file:
 
 ```cpp
-
+class ofApp : public ofBaseApp{
+  
+public:
+  // functions not shown
+  vector<ofPoint> previousPoints;
+};
 ```
+
+Now on every frame in our `draw` function, we can append the mouse position to our vector:
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+}
+```
+
+There's a lot going on here. We're constructing a new `ofPoint` object with the `ofPoint(mouseX, mouseY)` syntax. Then we're appending that to our `previousPoints` list. As the program executes, the `previousPoints` vector will grow as new points are appended. What can we do with this vector? Let's draw circles for every point in the `previousPoints` vector:
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+
+  for (int i = 0; i < previousPoints; i = i + 1) {
+    float x = previousPoints[i].x;
+    float y = previousPoints[i].y;
+    ofDrawCircle(x, y, 5);
+  }
+}
+```
+
+Rather than drawing circles at each point, how can we draw lines _between_ the lines? Here's an attempt at doing that:
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+  
+  for (int i = 0; i < previousPoints.size(); i = i + 1) {
+    float x1 = previousPoints[i - 1].x;
+    float y1 = previousPoints[i - 1].y;
+    float x2 = previousPoints[i].x;
+    float y2 = previousPoints[i].y;
+    ofDrawLine(x1, y1, x2, y2);
+  }
+}
+```
+
+This loops through our `previousPoints` vector, and for each point, draws a line from the previous point (at position `i - 1`) to the current point (at `i`). In this way, a line is drawn between successive pairs of points. There's a subtle bug in our loop, though. Even though this _mostly_ works, we might see weird artifacts sometimes — a line drawn in a way we don't expect. To understand why this happens, consider the case when `i = 0`. In this case, `i - 1 = -1`. If we try to access `previousPoints[-1].x;`, it's not clear what this means. What is a negative index? Even though the program runs, this code is nonsensical — we could get an `x` value back that we don't expect.
+
+The solution to this subtle problem is to change the bounds of our loop so that we never access index `-1`. Let's start our loop at `i = 1` rather than `i = 0`:
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+  
+  for (int i = 1; i < previousPoints.size(); i = i + 1) {
+    float x1 = previousPoints[i - 1].x;
+    float y1 = previousPoints[i - 1].y;
+    float x2 = previousPoints[i].x;
+    float y2 = previousPoints[i].y;
+    ofDrawLine(x1, y1, x2, y2);
+  }
+}
+```
+
+One thing we can do with vectors is _remove_ elements of the list. We can use this to achieve interesting effects when drawing our mouse history. For example, after we add more than 100 positions to our vector, let's remove the first point of the vector every frame:
+
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+  
+  for (int i = 1; i < previousPoints.size(); i = i + 1) {
+    float x1 = previousPoints[i - 1].x;
+    float y1 = previousPoints[i - 1].y;
+    float x2 = previousPoints[i].x;
+    float y2 = previousPoints[i].y;
+    ofDrawLine(x1, y1, x2, y2);
+  }
+  
+  if (previousPoints.size() > 100) {
+    previousPoints.erase(previousPoints.begin());
+  }
+}
+```
+
+The line `previousPoints.erase(previousPoints.begin());` removes the first element of the list. If you run this program, you'll see a line that trails 100 points behind the mouse.
+
+## Homework 3: Rain
+
+Using a vector of ofPoints, create a program that simulates falling rain. The rain can be rendered however you want (ex. circles). The circles should start at the top of the screen at random positions and fall to the bottom. When the rain drops hit the bottom of the window, they should be removed from the vector.
+
+### Solution
 
 
 ## Vocabulary
 
 ## Common misconceptions & questions
 
-
+- Difference between array and vector?
+- Difference between object and array?
+- Go off end of array?
+- In the line drawing examples, why does the line always start in the upper left corner?
