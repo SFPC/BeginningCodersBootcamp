@@ -49,4 +49,21 @@
 - ofGetFrameNum()
 - for loops
 - while loops
-- introduce arrays before object?
+- arrays
+- vectors
+- ofPoint
+- ofPolyLine
+- transformations
+  - ofTranslate
+  - ofRotateDeg
+  - ofScale
+- ofNoise
+- ofEasyCam
+- ofLight
+- ofBox
+- ofCone
+- ofPlane
+- boolean
+  ==, !, true, false, <=, >=, <, >
+
+- ofCapture?

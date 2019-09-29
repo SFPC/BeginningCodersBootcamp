@@ -1,4 +1,5 @@
 TODO: reformat headings in lecture section
+TODO: not sure if diagonal line example is correct
 
 # Day 1: Graphics, variables & functions
 

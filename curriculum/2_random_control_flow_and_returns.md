@@ -1,3 +1,13 @@
+TODO: are we calling out
+
+ofPoint p;
+p.x = 10;
+p.y = 20;
+
+ofPoint p(10, 20);
+
+function()
+
 # Day 2: Random numbers, control flow and returns
 
 - **Lecture time:** 3 hours

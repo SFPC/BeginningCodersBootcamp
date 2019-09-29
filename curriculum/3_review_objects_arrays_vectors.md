@@ -257,7 +257,7 @@ void ofApp::draw() {
 }
 ```
 
-This leaves a trail of circles on the canvas, which is cool. It leaves a trail because of our call to `ofSetBackgroundAuto(0);`, which tells openFrameworks not to overwrite the window with a background color every frame.
+This leaves a trail of circles on the canvas, which is cool. It leaves a trail because of our call to `ofSetBackgroundAuto(0);`, which tells openFrameworks not to overwrite the window with a background color every frame. This allows us to accumulate drawing on the canvas. In other words, drawing commands from previous frames persist.
 
 However, the circles are disconnected. We want to draw a line that connects each circle. We can do this by every frame drawing a line from the _current_ mouse (x, y) to the _previous_ mouse (x, y). In order to remember the mouse's last position, introduce new variables to the `.h` file:
 
@@ -655,6 +655,8 @@ The line `previousPoints.erase(previousPoints.begin());` removes the first eleme
 
 ## Homework 3: Rain
 
+// TODO: change this homework to drawing a loop of letters (or maybe the loop of letters should go on day 2?)
+
 Using a vector of ofPoints, create a program that simulates falling rain. The rain can be rendered however you want (ex. circles). The circles should start at the top of the screen at random positions and fall to the bottom. When the rain drops hit the bottom of the window, they should be removed from the vector.
 
 ![gif of falling rain](rain.gif)
@@ -723,6 +725,8 @@ void ofApp::draw() {
 ## Vocabulary
 
 ## Common misconceptions & questions
+
+TODO
 
 - Difference between array and vector?
 - Difference between object and array?
