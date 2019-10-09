@@ -74,13 +74,13 @@ We need to cover the following basic drawing concepts in openFrameworks:
 
 For example, `ofDrawLine(0, 100, 500, 100)` draws a line from the point (0, 100) to the point (500, 100).
 
-### Exercise 1: Draw a diagonal line
+### :pencil2: Exercise 1: Draw a diagonal line
 
 Draw a line from the top-left corner of the window to the bottom-right corner right corner. Remember that if we want to get the width and height of the window, we can take a look inside of `main.cpp`.
 
 TODO: illustration of finished exercise
 
-#### Exercise 1 solution
+#### Solution
 
 Modify the `draw` function in `ofApp.cpp`:
 
@@ -159,7 +159,7 @@ void ofApp::draw() {
 }
 ```
 
-### Exercise 2: Draw your name
+### :pencil2: Exercise 2: Draw your name
 
 Using openFrameworks primitives (lines, circles and rectangles), draw your name in the `draw` function.
 
@@ -167,7 +167,7 @@ Example solution:
 
 ![ALEX drawn with openFrameworks](name.png)
 
-#### Exercise 2 solution
+#### Solution
 
 Here's the code for the image above:
 
@@ -567,7 +567,7 @@ void ofApp::draw(){
 
 When we call `drawA(0)` or `drawA(300)`, we are initializing the value of `offset` inside of the `drawA` function to be 0 or 300, respectively. This allows us to reuse the same chunk of code, but adjust the value of a variable to change how the code is executed. Running this program should now produce two A's, side by side. We've successfully reduced the redundancy of our original code.
 
-### Exercise 3: Parameterized letter
+### :pencil2: Exercise 3: Parameterized letter
 
 Add a second parameter to your letter drawing function that allows you to adjust the vertical position of the letter in addition to the horizontal position. For example, the declaration of your function in the `ofApp.h` file would look like this:
 
@@ -622,9 +622,9 @@ void ofApp::drawA(int x, int y) {
 }
 ```
 
-[Full solution code](code/exercise-solutions/3-parameterized-letter)
+[:file_folder: Full solution code](code/exercise-solutions/3-parameterized-letter)
 
-## Homework 1: Generalize your letter function (2 hours)
+## :page_facing_up: Homework 1: Generalize your letter function (2 hours)
 
 
 
