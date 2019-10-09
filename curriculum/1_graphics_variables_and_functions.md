@@ -341,6 +341,8 @@ Now the value 300 only appears in one place, and is easy to change! This is a co
 
 ### An aside: mouse position
 
+// TODO: take this out, move to day 2
+
 There are special built in variables to openFrameworks that allow you to access the position of the mouse. These are called `mouseX` and `mouseY`. For example, if you want to draw a circle at the position of the mouse:
 
 ```cpp
@@ -550,7 +552,9 @@ void ofApp::drawA(int offset) {
 }
 ```
 
-Finally, we must pass in the parameter when we call it from our `draw` function:
+As you can see, we've put a variable declaration for `offset` inside of the `(` and `)` of the `drawA` function. All parameter declarations go inside of these parentheses. You can use the variable inside of the function in the same way that you would use a normal variable that was declared inside of the function. However, parameters differ from normal variables in that they are initialized when the function is called.
+
+For example, let's add parameter values to where our function is called in `draw`:
 
 ```cpp
 void ofApp::draw(){
@@ -561,10 +565,9 @@ void ofApp::draw(){
 }
 ```
 
-// TODO: watch dan shiffman on parameters and figure out how to explain this better
-// TODO: save out these code examples
+When we call `drawA(0)` or `drawA(300)`, we are initializing the value of `offset` inside of the `drawA` function to be 0 or 300, respectively. This allows us to reuse the same chunk of code, but adjust the value of a variable to change how the code is executed. Running this program should now produce two A's, side by side. We've successfully reduced the redundancy of our original code.
 
-### Exercise 3:
+### Exercise 3: Parameterized letter
 
 Add a second parameter to your letter drawing function that allows you to adjust the vertical position of the letter in addition to the horizontal position. For example, the declaration of your function in the `ofApp.h` file would look like this:
 
@@ -580,11 +583,50 @@ class ofApp : public ofBaseApp{
 }
 ```
 
-// TODO: provide solution
+Then use this function to draw 4 letters in different positions on the canvas. For example:
+
+![A drawn four times](images/exercise_parameterized_letter.png)
+
+#### Solution
+
+`ofApp.h`:
+
+```cpp
+class ofApp : public ofBaseApp{
+
+  public:
+    void setup();
+    void update();
+    void draw();
+  
+    void drawA(int x, int y);
+}
+```
+
+`ofApp.cpp`:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  drawA(0, 0);
+  drawA(300, 0);
+  drawA(300, 300);
+  drawA(310, 340);
+}
+
+void ofApp::drawA(int x, int y) {
+  ofDrawLine(x + 20, y + 200, x + 150, y + 20);
+  ofDrawLine(x + 150, y + 20, x + 280, y + 200);
+  ofDrawLine(x + 90, y + 100, x + 210, y + 100);
+}
+```
+
+[Full solution code](code/exercise-solutions/3-parameterized-letter)
 
 ## Homework 1: Generalize your letter function (2 hours)
 
-TODO: 
+
 
 ## Vocabulary
 
