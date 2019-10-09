@@ -74,7 +74,9 @@ We need to cover the following basic drawing concepts in openFrameworks:
 
 For example, `ofDrawLine(0, 100, 500, 100)` draws a line from the point (0, 100) to the point (500, 100).
 
-### :pencil2: Exercise 1: Draw a diagonal line
+---
+
+### Exercise 1: Draw a diagonal line
 
 Draw a line from the top-left corner of the window to the bottom-right corner right corner. Remember that if we want to get the width and height of the window, we can take a look inside of `main.cpp`.
 
@@ -99,6 +101,8 @@ void ofApp::draw() {
 ```
 
 **Important**: we can put math, like `1024 - 10`, inside our call to `ofDrawLine`.
+
+---
 
 ### More basic graphics & painter's algorithm
 
@@ -159,7 +163,9 @@ void ofApp::draw() {
 }
 ```
 
-### :pencil2: Exercise 2: Draw your name
+---
+
+### Exercise 2: Draw your name
 
 Using openFrameworks primitives (lines, circles and rectangles), draw your name in the `draw` function.
 
@@ -195,6 +201,8 @@ void ofApp::draw(){
   ofDrawLine(500, 200, 580, 20);
 }
 ```
+
+---
 
 ### Variables
 
@@ -567,7 +575,8 @@ void ofApp::draw(){
 
 When we call `drawA(0)` or `drawA(300)`, we are initializing the value of `offset` inside of the `drawA` function to be 0 or 300, respectively. This allows us to reuse the same chunk of code, but adjust the value of a variable to change how the code is executed. Running this program should now produce two A's, side by side. We've successfully reduced the redundancy of our original code.
 
-<div style="background-color: #ccc">
+--- 
+
 ### Exercise 3: Parameterized letter
 
 Add a second parameter to your letter drawing function that allows you to adjust the vertical position of the letter in addition to the horizontal position. For example, the declaration of your function in the `ofApp.h` file would look like this:
@@ -624,9 +633,13 @@ void ofApp::drawA(int x, int y) {
 ```
 
 [:file_folder: Full solution code](code/exercise-solutions/3-parameterized-letter)
-</div>
 
-## :page_facing_up: Homework 1: Generalized letter function
+--- 
+
+## Homework 1: Generalized letter function
+
+Add a `width` and `height` parameter to your code from [Exercise 3](exercise-3-parameterized-letter). Your completed function should have 4 parameters: `x`, `y`, `width` and `height`. The drawn letter should depend on the passed width and height. Then draw at least five different versions of your letter from the `draw` function — each differing in either position or dimensions.
+
 
 
 

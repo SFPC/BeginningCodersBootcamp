@@ -1,3 +1,5 @@
+- TODO: solution to the generalized letter function
+
 - fix tense across files (present tense, 1st person plural for general narrative)
 - move stuff around to make days more even
     - move function stuff from day 1 to day 2
