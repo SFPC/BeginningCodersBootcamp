@@ -67,3 +67,4 @@
   ==, !, true, false, <=, >=, <, >
 
 - ofCapture?
+- ofMap

@@ -4,6 +4,8 @@ exercise ideas
 
 ## Triangle grid
 
+![]
+
 ```cpp
 void ofApp::draw() {
   ofBackground(0);

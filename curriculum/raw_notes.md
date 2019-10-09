@@ -169,7 +169,7 @@ Bootcamp
 - more questions for students. "turn to the person next to you and tell them what you think" or "try doing this task with the person next to you"
 
 - don't need to store array of bugs for perlin noise
-- boolean
+- emphasize boolean earlier
 
 ###
 

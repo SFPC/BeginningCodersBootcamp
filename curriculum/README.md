@@ -1,7 +1,5 @@
 ## Day 1
 
-### Topics
-
 - Create and run openFrameworks projects
 - Introduce basic C++ syntax
 - Use openFrameworks graphics functions (`ofDrawLine`, `ofDrawCircle` etc.) in the `draw` loop
@@ -11,44 +9,35 @@
 - Declare and define functions
 - Generalize a function with parameters
 
-### Example programs
-
-- TODO
-
-### Exercises
-
-- TODO
-
+- ADD: introduce cout here earlier
+- ADD: strings?
 
 ## Day 2
 
-### Topics
-
 - Use `cout` to log values
 - Use `ofRandom` to produce random numbers in various ranges
-- Draw shapes with different colors; understand how `ofSetColor` uses painter's algorithm
+- Draw shapes with different colors; understand how `ofSetColor` fits into painter's algorithm
 - Put variables in `ofApp.h` that persist over the lifetime of the program
 - Use the openFrameworks `setup` function to initialize variables
 - If statements
+- ADD: While loops here
 - For loops
-- Nested for loops
+- Nested for loops (MOVE TO DAY 3?)
 - Use the `sin` function for animation
 - Write functions that return values
 - Understand state updates of the form `x = transform(x)`
 
-### Example programs
+- ADD: Celsius / Fahrenheit example
+- ADD: another example?
 
-- TODO
-
-### Exercises
-
-- TODO
+- ADD: Boolean types and logic
+- ADD: More if statements and for loops
+- ADD: introduce while loops here
+- ADD: more for loop drawing problems
 
 
 
 ## Day 3
-
-### Topics
 
 - Review variables
   - Life cycle of variable
@@ -58,22 +47,17 @@
   - What is a function?
   - Parameters
   - Return values
+  - CHANGE: move function example from day 3 to day 2?
 - Introduce C++ objects as containers for groups of variables
-- While loops
+- While loops (CHANGE: move to day 2)
 - Arrays
 - Vectors
 
-### Example programs
-
-- TODO
-
-### Exercises
-
-- TODO
+- average temperature
+- average position w polyline
+- 
 
 ## Day 4
-
-### Topics
 
 - Use Polylines to draw shapes
 - How to share openFrameworks apps
@@ -83,14 +67,6 @@
 - Using pushMatrix / popMatrix to remember transformation state
 - 3D graphics
 - Basic Lighting in openFrameworks
-
-### Example programs
-
-- TODO
-
-### Exercises
-
-- TODO
 
 ## Day 5
 

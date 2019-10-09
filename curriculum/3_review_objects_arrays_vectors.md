@@ -223,7 +223,7 @@ Consider the following questions. Some of these we haven't covered yet explicitl
     `ofApp.cpp`:
     
     ```cpp
-    void ofApp::thinkOfANumber() {
+    void ofApp::thinkOfANumber(int high) {
       return floor(ofRandom(1, high + 1));
     }
 
@@ -660,6 +660,9 @@ The line `previousPoints.erase(previousPoints.begin());` removes the first eleme
 Using a vector of ofPoints, create a program that simulates falling rain. The rain can be rendered however you want (ex. circles). The circles should start at the top of the screen at random positions and fall to the bottom. When the rain drops hit the bottom of the window, they should be removed from the vector.
 
 ![gif of falling rain](rain.gif)
+
+TODO: twinkling stars
+TODO: write your letter repeatedly
 
 ### Solution
 

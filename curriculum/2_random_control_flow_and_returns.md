@@ -6,7 +6,11 @@ p.y = 20;
 
 ofPoint p(10, 20);
 
-function()
+
+TODO: talk about boolean logic here more
+
+
+
 
 # Day 2: Random numbers, control flow and returns
 
