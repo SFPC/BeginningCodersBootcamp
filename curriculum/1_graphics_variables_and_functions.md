@@ -567,7 +567,8 @@ void ofApp::draw(){
 
 When we call `drawA(0)` or `drawA(300)`, we are initializing the value of `offset` inside of the `drawA` function to be 0 or 300, respectively. This allows us to reuse the same chunk of code, but adjust the value of a variable to change how the code is executed. Running this program should now produce two A's, side by side. We've successfully reduced the redundancy of our original code.
 
-### :pencil2: Exercise 3: Parameterized letter
+<div style="background-color: #ccc">
+### Exercise 3: Parameterized letter
 
 Add a second parameter to your letter drawing function that allows you to adjust the vertical position of the letter in addition to the horizontal position. For example, the declaration of your function in the `ofApp.h` file would look like this:
 
@@ -623,8 +624,9 @@ void ofApp::drawA(int x, int y) {
 ```
 
 [:file_folder: Full solution code](code/exercise-solutions/3-parameterized-letter)
+</div>
 
-## :page_facing_up: Homework 1: Generalize your letter function (2 hours)
+## :page_facing_up: Homework 1: Generalized letter function
 
 
 
