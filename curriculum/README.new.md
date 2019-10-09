@@ -10,6 +10,7 @@ TODO: "turn to student next to you" moments
 - Understand the painter's algorithm
 - Declare and assign primitive variables (`int`, `float`)
     - mention strings briefly but not emphasized
+    - ADD: better explanation of variable syntax
 - Use variables to reduce redundancy
 - Declare and define functions
 - Generalize a function with parameters

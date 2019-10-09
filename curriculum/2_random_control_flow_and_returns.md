@@ -9,9 +9,6 @@ ofPoint p(10, 20);
 
 TODO: talk about boolean logic here more
 
-
-
-
 # Day 2: Random numbers, control flow and returns
 
 - **Lecture time:** 3 hours

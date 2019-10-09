@@ -1,3 +1,7 @@
+TODO: motivation behind each exercise (pre and post conditions / pre reqs and outcomes)
+TODO: asteroid -> astroid 
+TODO: "turn to student next to you" moments
+
 ## Day 1
 
 - Create and run openFrameworks projects
