@@ -323,9 +323,9 @@ void ofApp::draw() {
 
 This causes the circle to do a "random walk" across the screen. If we wait long enough, the circle will eventually leave the screen. If we want to keep the circle inside of the bounds of the screen, then we must use *if statements*.
 
-### If statements
+### Conditionals
 
-If statements are a very powerful programming construct. They allow us to control the flow of the program based on conditions, and every programming language has them.
+Conditionals are a very powerful programming construct. They allow us to control the flow of the program based on conditions, and every programming language has them.
 
 If we want to test to see if our circle is beyond the right hand side of the screen, we can write the following:
 
@@ -335,7 +335,7 @@ if (x > ofGetWidth()) {
 }
 ```
 
-We can put code within the `{` and `}` that we want to run if the case is true. For example, we can force the circle to stay within the bound:
+This is called an "if statement". We can put code within the `{` and `}` that we want to run if the case is true. For example, we can force the circle to stay within the bound:
 
 ```cpp
 if (x > ofGetWidth()) {
@@ -349,7 +349,6 @@ if (x > ofGetWidth()) {
 Modify the random walk example so that the circle will stay within the bounds of the window. We've already written one if statement above to keep the circle from going off the right hand side of the window. Now we must write more if statements to prevent it from going off the other edges.
 
 #### Exercise 1 solution
-
 
 `ofApp.h`:
 
@@ -415,6 +414,116 @@ void ofApp::draw() {
 // other functions not shown
 ```
 
+### Booleans
+
+Conditionals and booleans are closely related. When we use an if statement, we put a **boolean expression** between the parentheses of the if statement:
+
+```
+if (<boolean expression>) {
+  ...
+}
+```
+
+In the same way that a mathematical expression in C++ evaluates to a number (for example, `3 + 5` evaluates to 8), a boolean expression evaluates to `true` or `false`. And in the same way that we can use operators like `+` and `-` in expressions, we can use operators in boolean expressions. We've already seen the use of greater than (`>`) and less than (`<`), which are arithmetic tests we can use to create a boolean expression. Here is a table of other arithmetic tests:
+
+| operator | meaning | example |
+| --- | --- | --- |
+| `<` | less than | `2 < 4` is `true` |
+| `>` | greater than |  `2 > 4` is `false` |
+| `<=` | less than or equal to |  `4 <= 4` is `true` |
+| `>=` | greater than or equal to |  `4 >= 4` is `true` |
+| `==` | equal to | `2 == 4` is `false` |
+| `!=` | not equal to | `2 != 4` is `true` |
+
+There are also ways to combine these tests into more sophisticated expressions using boolean operators. For example, if we want to test if a variable `x` is greater than 10 **and** less than 20, we would write that as:
+
+```cpp
+if (x > 10 && x < 20) {
+  // ...
+}
+```
+
+The `&&` here means "and". Here is a table of some other boolean operators:
+
+| operator | meaning | example |
+| --- | --- | --- |
+| `&&` | and | `2 < 4 || 2 > 4` is `true` |
+| `||` | or |  `2 < 4 && 2 > 4` is `false` |
+| `!` | not |  `!(2 < 4)` is `false` |
+
+We can also store boolean values in variables, just like `int` and `float`. These variables are of type `bool`:
+
+```cpp
+bool myBoolean = false;
+bool anotherBoolean = true;
+bool largerBoolean = (5 < 2) && (4 > 2) || ((10 * 2) > 3);
+
+// boolean variables can also be used in conditionals:
+if (largerBoolean) {
+  // ... do stuff ...
+}
+```
+
+As we've emphasized, if the expression in your if statement evaluates to `true`, then the code within the curly braces is executed. However, you might also want to run different code if the expression evaluates to `false`. You can do this by adding an `else` clause to the end of the if clause:
+
+```cpp
+if (<condition>) {
+  // do some stuff if condition is true
+} else {
+  // do some stuff if condition is false
+}
+```
+
+Here's another example with some actual code:
+
+```cpp
+if (ofRandom(1) < 0.5) {
+  // 50% of the time, draw a rectangle
+  ofDrawRectangle(0, 0, 100, 100);
+} else {
+  // The other 50% of the time, draw a circle
+  ofDrawCircle(50, 50, 100, 100);
+}
+```
+
+---
+
+### Exercise 2: Booleans and mouse position
+
+Create a square that changes color when you move the mouse over it. This will involve using the openFrameworks variables `mouseX` and `mouseY`. You'll also need to use a conditional to test if the mouse position is within the bounds of the square. In order to practice boolean expressions, you are only allowed to use a single if/else statement in your program.
+
+![Boolean mouse gif](images/boolean-mouse.gif)
+
+#### Solution
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  float squareSize = 100;
+
+  float left = ofGetWidth() / 2 - squareSize / 2;
+  float right = ofGetWidth() / 2 + squareSize / 2;
+  float top = ofGetHeight() / 2 - squareSize / 2;
+  float bottom = ofGetHeight() / 2 + squareSize / 2;
+
+  if (mouseX > left && mouseX < right && mouseY > top && mouseY < bottom) {
+    ofSetColor(255, 0, 0);
+  } else {
+    ofSetColor(0, 0, 255);
+  }
+  
+  ofDrawRectangle(
+    ofGetWidth() / 2 - squareSize / 2,
+    ofGetHeight() / 2 - squareSize / 2,
+    squareSize,
+    squareSize);
+}
+```
+
+[**Solution code**](code/exercise-solutions/boolean-mouse)
+
+---
 
 ## Looping
 
