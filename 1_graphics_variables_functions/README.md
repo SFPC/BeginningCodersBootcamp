@@ -1,10 +1,4 @@
-- TODO: reformat headings in lecture section
-- TODO: not sure if diagonal line example is correct
-
 # Day 1: Graphics, variables & functions
-
-- **Lecture time:** 3 hours
-- **Homework time:** 2 hours
 
 ## Learning outcomes
 
@@ -17,7 +11,7 @@
 - Declare and define functions
 - Generalize a function with parameters
 
-## Lecture (3 hours)
+## Lecture
 
 ### New project layout
 
@@ -181,7 +175,7 @@ Using openFrameworks primitives (lines, circles or rectangles), draw your name i
 
 Example:
 
-![ALEX drawn with openFrameworks](name.png)
+![ALEX drawn with openFrameworks](images/draw_name.png)
 
 #### Solution
 
@@ -331,7 +325,7 @@ circleSize = 2.1;
 
 Let's take a look back at [exercise 2](#Exercise-2:-Draw-your-name). We're going to modify this example. Rather than drawing your entire name, let's draw the first letter of your name _twice_:
 
-![A drawn twice](a_twice.png)
+![A drawn twice](draw_a_twice.png)
 
 If we want to draw the second A to the right of the first A, we need to add some offset to all of our x-coordinates:
 
@@ -512,7 +506,7 @@ void ofApp::draw() {
 
 This produces the following output:
 
-![output of translating 3 times](day1-translated-letter.png)
+![output of translating 3 times](translated_letter.png)
 
 The first call to `ofTranslate` moves the origin to (300, 0) and draws a letter there. The second call is applied on top of the that first transformation, and moves the origin to (500, 300) — 200 pixels to the right of and 300 pixels below (300, 0). The second letter is then drawn at (500, 300).
 
@@ -580,17 +574,59 @@ If we run this program, we see identical output to before. But our `draw` functi
 
 Draw a scene using `ofDrawLine`, `ofDrawRectangle`, `ofDrawCircle`, and `ofTranslate`. At least one element in your scene must be repeated. Put the code for drawing this element into a function that is called multiple times from `draw`. You can use `ofTranslate` in combination with your custom function to move the element around the screen.
 
+![example output for homework 1](homework_1_example.png)
 
 
+### Solution
 
-## Homework 1: Generalized letter function
+Here is the code for the example above:
 
-**Concepts**: basic drawing, translation, functions (no parameters or returns)
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  
+  // draw ground
+  ofDrawRectangle(0, ofGetWidth() / 2, ofGetWidth(), ofGetHeight());
+  
+  // draw sun
+  ofDrawCircle(200, 200, 50);
+  ofSetLineWidth(5);
+  ofDrawLine(100, 200, 300, 200);
+  ofDrawLine(200, 100, 200, 300);
+  ofDrawLine(100, 100, 300, 300);
+  ofDrawLine(100, 300, 300, 100);
+  
+  
+  // draw person 1
+  ofTranslate(300, ofGetWidth() / 2);
+  drawPerson();
+  
+  // draw person 2
+  ofTranslate(100, 0);
+  drawPerson();
+}
 
-Take your letter drawing function and add more parameters for vertical offset,
-width, and height. Your completed function should have 4 parameters: `x`, `y`, `width` and `height`. The drawn letter should depend on the passed width and height. Then draw at least five different versions of your letter from the `draw` function — each differing in either position or dimensions.
+void ofApp::drawPerson() {
+  // origin of the person is the bottom of the figure
+  // therefore, a lot of these numbers are negative in order to draw
+  // shapes above the origin
+  
+  // body
+  ofDrawRectangle(-10, -100, 20, 100 - 30);
+  
+  // legs
+  ofDrawLine(-10, -30, -20, 0);
+  ofDrawLine(10, -30, 20, 0);
+  
+  // arms
+  ofDrawLine(-30, -70, 30, -70);
+  
+  // head
+  ofDrawCircle(0, -100, 20);
+}
+```
 
-## Vocabulary
+[**Full solution code**](code/homework-1-solution)
 
 ## Common misconceptions & questions
 
