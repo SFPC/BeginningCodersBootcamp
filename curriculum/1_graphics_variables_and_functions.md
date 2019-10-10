@@ -177,7 +177,7 @@ void ofApp::draw() {
 
 ### Exercise 2: Draw your name
 
-Using openFrameworks primitives (lines, circles and rectangles), draw your name in the `draw` function.
+Using openFrameworks primitives (lines, circles or rectangles), draw your name in the `draw` function.
 
 Example:
 
@@ -444,7 +444,83 @@ b = 1000
 c = 0
 ```
 
+### Translations
+
+Let's revisit our example above, where we used a variable to reduce redundancy when drawing the same letter twice: 
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  // A
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+  
+  // A again
+  float offset = 300;
+  ofDrawLine(20 + offset, 200, 150 + offset, 20);
+  ofDrawLine(150 + offset, 20, 280 + offset, 200);
+  ofDrawLine(90 + offset, 100, 210 + offset, 100);
+}
+```
+
+In programming, there is often more than one way to achieve something. In this example, we used a variable to save an offset along the x axis so we didn't have to repeat ourselves by writing `300` in a bunch of places. Conceptually, what we're doing is **translating** the letter to a different position — 300 pixels to the right of the original letter.
+
+In this case, there's an alternate way to achieve the same result: using `ofTranslate(x, y)`:
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+
+  ofTranslate(300, 0);
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+}
+```
+
+`ofTranslate(300, 0)` shifts the origin — or (0, 0) point — to the right 300 pixels. Then when we draw our letter with its upper left corner at (0, 0), it _actually_ draws it at (300, 0). If we imagine openFrameworks as drawing to a canvas, `ofTranslate` is like moving the entire canvas. All drawing functions in openFrameworks are relative to the origin
+
+How is this approach different from using a variable? One core difference is that calls to `ofTranslate` _accumulate_. If we call `ofTranslate` twice, the second call is relative to the first. For example, if we draw three letters:
+
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+
+  // move to the right by 300 pixels
+  ofTranslate(300, 0);
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+
+  // move to the right by ANOTHER 300 pixels
+  ofTranslate(200, 300);
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+}
+```
+
+This produces the following output:
+
+![output of translating 3 times](day1-translated-letter.png)
+
+The first call to `ofTranslate` moves the origin to (300, 0) and draws a letter there. The second call is applied on top of the that first transformation, and moves the origin to (500, 300) — 200 pixels to the right of and 300 pixels below (300, 0). The second letter is then drawn at (500, 300).
+
 ### Writing our own functions
+
+
+TODO: change this to something that you can do with translate
+
 
 We've already been using two types of functions, discussed at the beginning of the day. Firstly, we've been putting code inside of the `draw` function that openFrameworks provides for us. Secondly, we've been _calling_ functions that openFrameworks also provides for us. Now we're going to extend our use of functions to writing and calling our own functions.
 
@@ -558,106 +634,17 @@ void ofApp::draw(){
 
 If we run this program, we see identical output to before. But our `draw` function is no longer cluttered with `ofDrawLine`s. As we write larger programs, you might find it convenient to organize code in this way: putting sections of code into functions, and then calling on those functions from `draw`. Functions are essentially little "mini programs" which can be composed into the larger, main program.
 
-### Using functions to reduce redundancy
 
-We talked about how there are two motivations for functions: **organization** and **reusability**. Now let's cover an example of how we might use functions for reusability.
 
-Consider our example of drawing an "A" twice to the screen:
 
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-  
-  // A
-  ofDrawLine(20, 200, 150, 20);
-  ofDrawLine(150, 20, 280, 200);
-  ofDrawLine(90, 100, 210, 100);
-  
-  // A again
-  float offset = 300;
-  ofDrawLine(20 + offset, 200, 150 + offset, 20);
-  ofDrawLine(150 + offset, 20, 280 + offset, 200);
-  ofDrawLine(90 + offset, 100, 210 + offset, 100);
-}
-```
 
-We discussed how to use a variable (`offset`) to reduce redundancy. But we might sense that there is still quite a bit of redundancy in this code. We have three lines of code that are almost the same repeated twice. If we find ourselves repeating code often, we should put this code inside of a function, so that we can reuse the code without repeating ourselves.
 
-As before, let's write a function `drawA` which is responsible for drawing an A character.
 
-`ofApp.h`:
 
-```cpp
-class ofApp : public ofBaseApp{
 
-  public:
-    void setup();
-    void update();
-    void draw();
-  
-    void drawA();
-    // other functions not shown
-}
-```
 
-Now back in our `ofApp.cpp` file, we can call this function twice in `draw`:
 
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-  
-  drawA();
-  drawA();
-}
 
-void ofApp::drawA() {
-  ofDrawLine(20, 200, 150, 20);
-  ofDrawLine(150, 20, 280, 200);
-  ofDrawLine(90, 100, 210, 100);
-}
-```
-
-However, if you run this code, you'll only see a single A. This is because our function is drawing the A twice in exactly the same location — we removed our `offset` variable that we were using to adjust the position of the second A. We need to be able to tell our function _where_ it should draw the A. In order to do this, we'll use **parameters**.
-
-First, modify the `ofApp.h` file:
-
-```cpp
-class ofApp : public ofBaseApp{
-
-  public:
-    void setup();
-    void update();
-    void draw();
-  
-    void drawA(int offset);
-    // other functions not shown
-}
-```
-
-And then modify our function in the `ofApp.cpp` to use this `offset` parameter:
-
-```cpp
-void ofApp::drawA(int offset) {
-  ofDrawLine(offset + 20, 200, offset + 150, 20);
-  ofDrawLine(offset + 150, 20, offset + 280, 200);
-  ofDrawLine(offset + 90, 100, offset + 210, 100);
-}
-```
-
-As you can see, we've put a variable declaration for `offset` inside of the `(` and `)` of the `drawA` function. All parameter declarations go inside of these parentheses. You can use the variable inside of the function in the same way that you would use a normal variable that was declared inside of the function. However, parameters differ from normal variables in that they are initialized when the function is called.
-
-For example, let's add parameter values to where our function is called in `draw`:
-
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-  
-  drawA(0);
-  drawA(300);
-}
-```
-
-When we call `drawA(0)` or `drawA(300)`, we are initializing the value of `offset` inside of the `drawA` function to be 0 or 300, respectively. This allows us to reuse the same chunk of code, but adjust the value of a variable to change how the code is executed. Running this program should now produce two A's, side by side. We've successfully reduced the redundancy of our original code.
 
 ## Homework 1: Generalized letter function
 

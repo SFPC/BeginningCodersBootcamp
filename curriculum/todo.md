@@ -1,6 +1,8 @@
-- solution to the generalized letter function
+- robby conversation
+    - more variable examples in day 1
+    - more expressions in day 1
+    - random?
 
-- fix tense across files (present tense, 1st person plural for general narrative)
 - move stuff around to make days more even
     - move function stuff from day 1 to day 2
     - move end of day 2 to day 3
@@ -14,29 +16,25 @@
 
 - day 1
     - drawing
-    - color
-        -> exercise: draw name
-    - transformations
+    - ofTranslate
     - functions (no returns or parameters)
         -> exercise: draw name multiple times
     - variables
     - expressions
-    - random
-        -> exercise: draw name at random positions
-
+    - conditionals
+    - random?
     -> homework: draw a random scene
         - use functions to organize code
         - at least one function must be called more than once
         - use random 
 
 - day 2
+    - loops
     - parameters
-    - conditionals
-    - x = x + 1
-    - while loops
-    - for loops
+    - returns
     - member variables
-    - parameters
+    - color
+        -> exercise: draw name
 
 
 - generalized letter

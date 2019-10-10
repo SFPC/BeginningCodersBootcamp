@@ -30,6 +30,116 @@ TODO: talk about boolean logic here more
 
 ## Lecture (3 hours)
 
+### Parameters
+
+TODO: change this example to something you can't do with ofTranslate
+
+We talked about how there are two motivations for functions: **organization** and **reusability**. Now let's cover an example of how we might use functions for reusability.
+
+Consider our example of drawing an "A" twice to the screen:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  // A
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+  
+  // A again
+  float offset = 300;
+  ofDrawLine(20 + offset, 200, 150 + offset, 20);
+  ofDrawLine(150 + offset, 20, 280 + offset, 200);
+  ofDrawLine(90 + offset, 100, 210 + offset, 100);
+}
+```
+
+We discussed how to use a variable (`offset`) to reduce redundancy. But we might sense that there is still quite a bit of redundancy in this code. We have three lines of code that are almost the same repeated twice. If we find ourselves repeating code often, we should put this code inside of a function, so that we can reuse the code without repeating ourselves.
+
+As before, let's write a function `drawA` which is responsible for drawing an A character.
+
+`ofApp.h`:
+
+```cpp
+class ofApp : public ofBaseApp{
+
+  public:
+    void setup();
+    void update();
+    void draw();
+  
+    void drawA();
+    // other functions not shown
+}
+```
+
+Now back in our `ofApp.cpp` file, we can call this function twice in `draw`:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  drawA();
+  drawA();
+}
+
+void ofApp::drawA() {
+  ofDrawLine(20, 200, 150, 20);
+  ofDrawLine(150, 20, 280, 200);
+  ofDrawLine(90, 100, 210, 100);
+}
+```
+
+However, if you run this code, you'll only see a single A. This is because our function is drawing the A twice in exactly the same location — we removed our `offset` variable that we were using to adjust the position of the second A. We need to be able to tell our function _where_ it should draw the A. In order to do this, we'll use **parameters**.
+
+First, modify the `ofApp.h` file:
+
+```cpp
+class ofApp : public ofBaseApp{
+
+  public:
+    void setup();
+    void update();
+    void draw();
+  
+    void drawA(int offset);
+    // other functions not shown
+}
+```
+
+And then modify our function in the `ofApp.cpp` to use this `offset` parameter:
+
+```cpp
+void ofApp::drawA(int offset) {
+  ofDrawLine(offset + 20, 200, offset + 150, 20);
+  ofDrawLine(offset + 150, 20, offset + 280, 200);
+  ofDrawLine(offset + 90, 100, offset + 210, 100);
+}
+```
+
+As you can see, we've put a variable declaration for `offset` inside of the `(` and `)` of the `drawA` function. All parameter declarations go inside of these parentheses. You can use the variable inside of the function in the same way that you would use a normal variable that was declared inside of the function. However, parameters differ from normal variables in that they are initialized when the function is called.
+
+For example, let's add parameter values to where our function is called in `draw`:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  drawA(0);
+  drawA(300);
+}
+```
+
+When we call `drawA(0)` or `drawA(300)`, we are initializing the value of `offset` inside of the `drawA` function to be 0 or 300, respectively. This allows us to reuse the same chunk of code, but adjust the value of a variable to change how the code is executed. Running this program should now produce two A's, side by side. We've successfully reduced the redundancy of our original code.
+
+
+
+
+
+
+
+
 ### Logging things to the console
 
 First, let's learn how to log things to the console. This is useful for printing out the values of functions and variables.
@@ -659,6 +769,17 @@ void ofApp::draw() {
 This code produces the following image:
 
 ![a grid of circles](grid.png)
+
+
+
+
+// TODO: add while loops!!!!
+// TODO: add lots more for loop stuff!!!
+
+
+
+
+
 
 ### Review of functions
 
