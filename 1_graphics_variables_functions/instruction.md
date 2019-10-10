@@ -518,42 +518,13 @@ The first call to `ofTranslate` moves the origin to (300, 0) and draws a letter 
 
 ### Writing our own functions
 
-
-TODO: change this to something that you can do with translate
-
-
 We've already been using two types of functions, discussed at the beginning of the day. Firstly, we've been putting code inside of the `draw` function that openFrameworks provides for us. Secondly, we've been _calling_ functions that openFrameworks also provides for us. Now we're going to extend our use of functions to writing and calling our own functions.
 
-A function is a section of code that we can save and run at anytime. Just like variables store data, functions store code. There are two motivations for writing our own functions: **organization** and **reusability**.
+A function is a section of code that we can save and run at anytime. Just like variables store data, functions store code. One motivation for writing our own functions is **reusability**. In a similar way to how we used a variable to reduce redundancy, we can also use a function to reduce redundancy.
 
-Let's cover how we might use functions for organization. Recall the full code for drawing our name:
+In our code for drawing a letter three times, you might have noticed that we're starting to repeat ourselves — there are three identical lines of code occurring more than once. This is a clue that we might want to factor this code out into a function.
 
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-  
-  // A
-  ofDrawLine(20, 200, 150, 20);
-  ofDrawLine(150, 20, 280, 200);
-  ofDrawLine(90, 100, 210, 100);
-  
-  // L
-  ofDrawLine(300, 20, 300, 200);
-  ofDrawLine(300, 200, 380, 200);
-  
-  // E
-  ofDrawLine(400, 20, 400, 200);
-  ofDrawLine(400, 20, 480, 20);
-  ofDrawLine(400, 100, 480, 100);
-  ofDrawLine(400, 200, 480, 200);
-
-  // X
-  ofDrawLine(500, 20, 580, 200);
-  ofDrawLine(500, 200, 580, 20);
-}
-```
-
-Let's split this code up into individual functions for each letter to keep things organized. First, we need to declare these new functions in our `ofApp.h` file:
+First, we need to declare this new function in our `ofApp.h` file:
 
 ```cpp
 class ofApp : public ofBaseApp{
@@ -564,35 +535,20 @@ class ofApp : public ofBaseApp{
     void draw();
   
     void drawA();
-    void drawL();
-    void drawE();
-    void drawX();
 
     // other functions not shown
 }
 ```
 
-Next, we need to define these functions back in our `ofApp.cpp` file. These function definitions can go anywhere:
+Next, we need to define the function back in our `ofApp.cpp` file. This function definitions can go anywhere:
 
 ```cpp
 void ofApp::drawA() {
   
 }
-
-void ofApp::drawL() {
-  
-}
-
-void ofApp::drawE() {
-  
-}
-
-void ofApp::drawX() {
-  
-}
 ```
 
-Next, let's cut and paste the code to draw each letter and paste it into these new functions:
+Next, let's cut and paste the code to draw the letter and paste it into this new function:
 
 ```cpp
 void ofApp::drawA() {
@@ -600,57 +556,36 @@ void ofApp::drawA() {
   ofDrawLine(150, 20, 280, 200);
   ofDrawLine(90, 100, 210, 100);
 }
-
-void ofApp::drawL() {
-  ofDrawLine(300, 20, 300, 200);
-  ofDrawLine(300, 200, 380, 200);
-}
-
-void ofApp::drawE() {
-  ofDrawLine(400, 20, 400, 200);
-  ofDrawLine(400, 20, 480, 20);
-  ofDrawLine(400, 100, 480, 100);
-  ofDrawLine(400, 200, 480, 200);
-}
-
-void ofApp::drawX() {
-  ofDrawLine(500, 20, 580, 200);
-  ofDrawLine(500, 200, 580, 20);
-}
 ```
 
-After we finish defining our functions, we need to call them. If we don't call them, then the code inside of them is never executed. Let's call our functions from within `draw`:
+After we finish defining our function, we need to call it. If we don't call it, then the code inside of them is never executed. Let's call our new function from within `draw`:
 
 ```cpp
 void ofApp::draw(){
   ofBackground(0);
   
   drawA();
-  drawL();
-  drawE();
-  drawX();
+
+  ofTranslate(300, 0);
+  drawA();
+
+  ofTranslate(200, 300);
+  drawA();
 }
 ```
 
 If we run this program, we see identical output to before. But our `draw` function is no longer cluttered with `ofDrawLine`s. As we write larger programs, you might find it convenient to organize code in this way: putting sections of code into functions, and then calling on those functions from `draw`. Functions are essentially little "mini programs" which can be composed into the larger, main program.
 
+## Homework 1: Draw a scene
 
-
-
-
-
-
-
-
+Draw a scene using `ofDrawLine`, `ofDrawRectangle`, `ofDrawCircle`, and `ofTranslate`. At least one element in your scene must be repeated. Put the code for drawing this element into a function that is called multiple times from `draw`. You can use `ofTranslate` in combination with your custom function to move the element around the screen.
 
 
 
 
 ## Homework 1: Generalized letter function
 
-TODO: take parameterized-letter exercise solution and turn it into generalized letter.
-
-**Concepts**: functions, parameters, basic drawing
+**Concepts**: basic drawing, translation, functions (no parameters or returns)
 
 Take your letter drawing function and add more parameters for vertical offset,
 width, and height. Your completed function should have 4 parameters: `x`, `y`, `width` and `height`. The drawn letter should depend on the passed width and height. Then draw at least five different versions of your letter from the `draw` function — each differing in either position or dimensions.

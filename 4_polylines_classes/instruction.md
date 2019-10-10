@@ -518,64 +518,12 @@ Add radius and color parameters to `Ball::setup`. This will follow a similar pat
 
 Now we're going to introduce **transformations**. There are 3 transformation functions we'll look at:
 
-- `ofTranslate(x, y)`
 - `ofRotateDeg(degrees)`
 - `ofScale(scale)`
 
-Let's go back to a very basic example: drawing a rectangle to the window. Let's say we want a rectangle with a top left corner at (25, 60) and a width and height of 100:
 
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-  ofDrawRectangle(25, 50, 100, 100);
-}
-```
 
-An equivalent way of doing the same thing is to use the `ofTranslate` function:
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-  ofTranslate(25, 50);
-  ofDrawRectangle(0, 0, 100, 100);
-}
-```
-
-`ofTranslate` shifts the origin — or (0, 0) point — to the right 25 pixels and down 50 pixels. Then when we draw a rectangle with its upper left corner at (0, 0), it _actually_ draws it at (25, 50). If we imagine openFrameworks as drawing to a canvas, `ofTranslate` is like moving the entire canvas.
-
-It may seem like this is just a slightly more cumbersome way of drawing a rectangle at a given (x, y) position. And right now, it is. But one difference is that calls to `ofTranslate` _accumulate_. For example:
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-
-  // move origin to 25, 50
-  ofTranslate(25, 50);
-  ofDrawRectangle(0, 0, 100, 100);
-
-  // move origin right by 100 pixels
-  ofTranslate(200, 0);
-  ofDrawRectangle(0, 0, 100, 100);
-}
-```
-
-The first call to `ofTranslate` moves the origin to (25, 50) and draws a rectangle there. The second call is applied on top of the that first transformation, and moves the origin to (225, 50) — 200 pixels to the right of (25, 50). The second rectangle is then drawn at (225, 50). If we wanted, we could set the origin to the mouse:
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-
-  // move origin to 25, 50
-  ofTranslate(mouseX, mouseY);
-  ofDrawRectangle(0, 0, 100, 100);
-
-  // move origin right by 100 pixels
-  ofTranslate(200, 0);
-  ofDrawRectangle(0, 0, 100, 100);
-}
-```
-
-Now as we move the mouse around the screen, we shift both rectangles. You might start to see why `ofTranslate` is useful. Changing the origin is a powerful drawing tool. Next, let's talk about `ofScale`:
+ Next, let's talk about `ofScale`:
 
 ```cpp
 void ofApp::draw() {
