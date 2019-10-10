@@ -28,7 +28,20 @@ TODO: talk about boolean logic here more
 - Write functions that return values
 - Understand state updates of the form `x = transform(x)`
 
-## Lecture (3 hours)
+## Lecture
+
+
+
+## Homework 1: Generalized letter function
+
+**Concepts**: basic drawing, translation, functions (no parameters or returns)
+
+Take your letter drawing function and add more parameters for vertical offset,
+width, and height. Your completed function should have 4 parameters: `x`, `y`, `width` and `height`. The drawn letter should depend on the passed width and height. Then draw at least five different versions of your letter from the `draw` function — each differing in either position or dimensions.
+
+
+
+
 
 ### Parameters
 
