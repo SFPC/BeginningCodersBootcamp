@@ -325,7 +325,7 @@ circleSize = 2.1;
 
 Let's take a look back at [exercise 2](#Exercise-2:-Draw-your-name). We're going to modify this example. Rather than drawing your entire name, let's draw the first letter of your name _twice_:
 
-![A drawn twice](draw_a_twice.png)
+![A drawn twice](images/draw_a_twice.png)
 
 If we want to draw the second A to the right of the first A, we need to add some offset to all of our x-coordinates:
 
@@ -506,7 +506,7 @@ void ofApp::draw() {
 
 This produces the following output:
 
-![output of translating 3 times](translated_letter.png)
+![output of translating 3 times](images/translated_letter.png)
 
 The first call to `ofTranslate` moves the origin to (300, 0) and draws a letter there. The second call is applied on top of the that first transformation, and moves the origin to (500, 300) — 200 pixels to the right of and 300 pixels below (300, 0). The second letter is then drawn at (500, 300).
 
@@ -574,7 +574,7 @@ If we run this program, we see identical output to before. But our `draw` functi
 
 Draw a scene using `ofDrawLine`, `ofDrawRectangle`, `ofDrawCircle`, and `ofTranslate`. At least one element in your scene must be repeated. Put the code for drawing this element into a function that is called multiple times from `draw`. You can use `ofTranslate` in combination with your custom function to move the element around the screen.
 
-![example output for homework 1](homework_1_example.png)
+![example output for homework 1](images/homework_1_example.png)
 
 
 ### Solution
