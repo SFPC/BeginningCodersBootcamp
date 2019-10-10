@@ -300,6 +300,63 @@ float circleSize = 5.3;
 circleSize = 2.1;
 ```
 
+### Expressions
+
+In addition to assigning a variable to a plain ol' number, C++ also supports mathematical expressions:
+
+```cpp
+// x will evaluate to 3:
+float x = 1 + 2;
+```
+
+When we combine operands (like 1 and 2) with an operator (like `+`), we call the whole collection an **expression**. All other common arithmetic is supported in expressions:
+
+```cpp
+// subtraction
+float a = 5.5 - 1.2;
+
+// multiplication
+float b = 5 * 2.4;
+
+// division
+float c = 4 / 2;
+```
+
+If there are multiple operators in a single expression, they are evaluated in order according to mathematical order of operations (in other words, multiplication and division are evaluated before addition and subtraction). You can use parentheses to group operations:
+
+```cpp
+float d = (5 + 2) / (1 - 2.4);
+```
+
+There's a subtle issue with the division operator (`/`). If we divide two integer values (i.e. not decimal values), then C++ will use *integer division*. Integer division always returns an integer, which is not what you usually expect. For example, if you write `1 / 2`, you would expect this expression to evaluate to `0.5`. However, because C++ is doing integer division, this will actually give us `0` — **the fractional (decimal) part of the result is dropped**.
+
+If we want to perform floating point division, we need to turn one of our numbers into a float by adding a decimal:
+
+```cpp
+// stores 0.5
+float x = 1.0 / 2;
+```
+
+We could store the value in an `int` type variable as well, but beware: this will also drop the fractional portion of the result:
+
+```cpp
+// stores 0
+int x = 1.0 / 2;
+```
+
+### Exercise 3: Expression practice
+
+Evaluate the following expressions to figure out what is stored in each variable:
+
+```cpp
+float x = 3 * 2 + -8 * 4 + 2 * 1.0;
+float y = 1.5 * 4 + 2 / 1;
+float z = 55 / 10 + (1.0 - 0.5) * 10;
+int a = (2.0 / 10.0) + 100;
+```
+
+#### Solutions
+
 ### Removing redundancy using variables
 
 Let's take a look back at [exercise 2](#Exercise-2:-Draw-your-name). We're going to modify this example. Rather than drawing your entire name, let's draw the first letter of your name _twice_:
@@ -616,7 +673,7 @@ class ofApp : public ofBaseApp{
 `ofApp.cpp`:
 
 ```cpp
-void ofApp::draw(){
+void ofApp::draw() {
   ofBackground(0);
   
   drawA(0, 0);
