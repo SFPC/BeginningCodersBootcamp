@@ -15,7 +15,7 @@
 
 ### New project layout
 
-First, we created a blank openFrameworks project. The following files are created for us.
+First, we create a blank openFrameworks project. The following files are created for us.
 
 -   `main.cpp` — we usually don't need to change this file; however, we can change the dimensions of the window here.
 -   `ofApp.cpp` — this is the main file you'll edit, where most of your code will go.
@@ -98,9 +98,9 @@ void ofApp::draw() {
 
 ---
 
-### More basic graphics & painter's algorithm
+### Comments
 
-We introduce comments (lines beginning with `//`) as an important tool for "writing a letter to yourself in code." Example:
+Comments (lines beginning with `//`) are an important tool for "writing a letter to yourself in code." Example:
 
 ```cpp
 void ofApp::draw() {
@@ -108,6 +108,8 @@ void ofApp::draw() {
     ofDrawLine(10, 10, 1024 - 20, 768 - 20);
 }
 ```
+
+### Setting the background color
 
 `ofBackground(red, green, blue)` can be used to set the background color. The values of `red`, `green`, and `blue` must be numbers in the range of 0 – 255, where 0 represents "no color at all" and 255 represents "a maximum amount of that color". Example:
 
@@ -137,10 +139,14 @@ void ofApp::draw() {
 }
 ```
 
+### Painter's algorithm
+
 This introduces two important concepts:
 
 1. _Lines of code are executed in a precise order, starting with the first line of a function and continuing down_.
 2. The **painter's algorithm**. openFrameworks graphics calls are like commands that you would give to a painter ("first paint the background purple, next paint a line"). If you command the painter to fill in a background as the last step in a list of instructions, it covers up what is below it.
+
+### More drawing primitives
 
 Finally, we look at two more primitive drawing functions: `ofDrawCircle(x, y, radius)` and `ofDrawRectangle(x, y, width, height)`. Examples:
 
