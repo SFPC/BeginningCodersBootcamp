@@ -447,8 +447,8 @@ The `&&` here means "and". Here is a table of some other boolean operators:
 
 | operator | meaning | example |
 | --- | --- | --- |
-| `&&` | and | `2 < 4 || 2 > 4` is `true` |
-| `||` | or |  `2 < 4 && 2 > 4` is `false` |
+| `&&` | and | `2 < 4 && 2 > 4` is `true` |
+| `\|\|` | or |  `2 < 4 \|\| 2 > 4` is `false` |
 | `!` | not |  `!(2 < 4)` is `false` |
 
 We can also store boolean values in variables, just like `int` and `float`. These variables are of type `bool`:
@@ -521,7 +521,7 @@ void ofApp::draw(){
 }
 ```
 
-[**Solution code**](code/exercise-solutions/boolean-mouse)
+[**Full solution code**](code/exercise-solutions/boolean-mouse)
 
 ---
 
