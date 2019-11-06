@@ -1,3 +1,4 @@
+
 TODO: are we calling out
 
 ofPoint p;
@@ -30,14 +31,357 @@ TODO: talk about boolean logic here more
 
 ## Lecture
 
+### Logging things to the console
+
+First, let's learn how to log things to the console. This is useful for printing out the values of functions and variables.
+
+```cpp
+void ofApp::draw() {
+    cout << ofGetWidth() << endl;
+}
+```
+
+The `<<` here is a special C++ syntax that allows us to send output to the console. We can chain together multiple parts of output using `<<`. In the above example, we're printing out the width of the window, and then appending an `endl`. The `endl` stands for "end line", and adds a line break to the output (the same as when you hit "return" on your keyboard).
+
+### Strings
+
+If we want to log text to the console, then we can use strings. Strings are data type (like `int`, `float`, and `bool`) that stores text data. We won't be using them much in this bootcamp, but it is useful to know how to print text to the console:
+
+```cpp
+void ofApp::draw() {
+    cout << "Hello, world!" << endl;
+}
+```
+
+This will repeatedly print `Hello, world!` to the console. If we want to print multiple values on the same line, we can string them together with the `<<` operator:
+
+```cpp
+void ofApp::draw() {
+    cout << "Hello " << "Alex" << endl;
+}
+```
+
+We can also print a mix of text and numbers:
+
+```cpp
+void ofApp::draw() {
+    cout << "The width of the program is " << ofGetWidth() << endl;
+}
+```
+
+In creative coding, it's often useful to print things to the console when you're debugging, especially to get the value of variables in your program.
+
+### `ofRandom`
+
+One tool we use a lot in creative coding is randomness. openFrameworks has an `ofRandom` function that generates random floating point (decimal) number for us. If we pass a single parameter into `ofRandom`, then we'll get a random number between 0 and the passed value:
+
+```cpp
+void ofApp::draw() {
+    // prints a random number between 0 and 100
+    cout << ofRandom(100) << endl;
+}
+```
+
+If you run this program, you'll see lots of numbers printed to the console — `ofRandom` gives us a different random number every time it is run. One thing to note is that the generated number will never include the upper bound, 100 (in other words, it is an exclusive upper bound).
+
+Next we're going to save a random value in a variable, and use it to draw something.
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+
+  // generate a random number between 0 and the width
+  float xPos = ofRandom(ofGetWidth());
+
+  // generate a random number between 0 and the height
+  float yPos = ofRandom(ofGetHeight());
+
+  // draw a circle at that random position
+  ofDrawCircle(xPos, yPos, 10);
+}
+```
+
+Running this program causes a circle to flicker around the screen. Every frame, a new random position is chosen.
+
+Let's touch on a small syntax detail. If we want, we don't need to save the `ofRandom` values to variables — we can insert them directly into the call to `ofDrawCircle`:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+
+  // draw a circle at that random position
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+}
+```
+
+This code has an identical effect to the previous version, but is more succinct. There is not really a preference for either style; one is more verbose, but potentially more clear. The other is shorter but potentially harder to understand.
+
+There is another way to call `ofRandom`, by passing in both a min and max value:
+
+```cpp
+void ofApp::draw(){
+  float x = ofRandom(300, 500);
+  ofDrawCircle(x, 100, 20, 20);
+}
+```
+
+The circle will have an x position between 300 – 500 pixels.
+
+TODO: exercise with randomness
 
 
-## Homework 1: Generalized letter function
 
-**Concepts**: basic drawing, translation, functions (no parameters or returns)
 
-Take your letter drawing function and add more parameters for vertical offset,
-width, and height. Your completed function should have 4 parameters: `x`, `y`, `width` and `height`. The drawn letter should depend on the passed width and height. Then draw at least five different versions of your letter from the `draw` function — each differing in either position or dimensions.
+
+### For loops
+
+Next we'll learn about another control structure called loops. To motivate this, let's say we wanted to draw a ton of circles every frame:
+
+```cpp
+void ofApp::draw() {
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+}
+```
+
+This does what we want, but it's redundant, and programmers hate redundancy. We're repeating ourselves too much. In this case, we can use a for loop to automate this repetition.
+
+```cpp
+void ofApp::draw() {
+  // run ofDrawCircle 10 times
+  for (int i = 0; i < 10; i = i + 1) {
+    ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  }
+}
+```
+
+For loops are very syntax heavy. What's important to understand is that the code inside of the for loop will run 10 times. We can adjust the number of times the for loop runs by changing the _loop bound_:
+
+```cpp
+void ofApp::draw() {
+  // run ofDrawCircle 100 times
+  for (int i = 0; i < 100; i = i + 1) {
+    ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
+  }
+}
+```
+
+A more sophisticated example of looping is to use the looping variable `i`. The first thing to understand is that we can decide how we increment `i`. Let's look at a few examples:
+
+```cpp
+for (int i = 0; i < 10; i = i + 1) {
+  cout << i << endl;
+}
+```
+
+This prints out:
+
+```
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+We can adjust the loop increment by adding 2 to `i` rather than 1:
+
+```cpp
+for (int i = 0; i < 10; i = i + 2) {
+  cout << i << endl;
+}
+```
+
+This prints out:
+
+```
+0
+2
+4
+6
+8
+```
+
+Now let's use this `i` value in order to draw a series of circles:
+
+```cpp
+void ofApp::draw() {
+  for (int i = 0; i < ofGetWidth(); i = i + 20) {
+    ofDrawCircle(i, ofGetHeight() * 0.5, 10);
+  }
+}
+```
+
+![Example of line of circles](circles.png)
+
+
+### Syntax of a for loop
+
+Let's review the specific pieces of the for loop syntax:
+
+```cpp      
+for (initialization; condition; update) {
+  // body
+}
+```
+
+- *initialization*: runs once at the beginning of the for loop and sets up the _looping variable_.
+- *condition*: determines when the loop stops running. If the expression here evaluates to true, then the loop continues to run.
+- *update*: updates the looping variable by some increment
+- *body*: the code that runs every time the condition is true
+
+### Nested for loops
+
+We can put for loops inside of for loops. A common use case of this structure in creative coding is to draw grids. In the following example, we have one for loop that runs over the *height*, and inside of that, we have another loop that runs over the *width*. We draw circles using the looping variables `i` and `j`.
+
+```cpp      
+void ofApp::draw() {
+  ofBackground(0);
+  
+  for (int j = 0; j < ofGetHeight(); j = j + 30) {
+    for (int i = 0; i < ofGetWidth(); i = i + 30) {
+      ofDrawCircle(i, j, 10);
+    }
+  }
+}
+```
+
+This code produces the following image:
+
+![a grid of circles](grid.png)
+
+
+### Exercise 1:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Color
+
+We use the function `ofSetColor(red, blue, green)` to choose colors. Recalling the painter's algorithm from day 1: openFrameworks models its graphics functions after a painter painting on a canvas. When we call `ofSetColor`, it's analogous to a painter dipping their paintbrush in a bucket of paint. For example:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+
+  // put paint on the paint brush
+  ofSetColor(0, 70, 190);
+
+  // draw a circle at that random position, with the color
+  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
+}
+```
+
+It's important to understand that the color _stays on the paintbrush_ until we set a different color.
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+
+  // put paint on the paint brush
+  ofSetColor(0, 70, 190);
+
+  // draw a circle at that random position, with the color
+  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
+
+  // this rectangle will also use the same color
+  ofDrawRectangle(0, 0, 100, 300);
+}
+```
+
+This gets into a detail about openFrameworks: it maintains state behind the scene. It's like a drawing machine with lots of buttons and switches and an internal state. When we call `ofSetColor`, we're setting the state of this machine.
+
+To draw a new shape with a different color, we can call `ofSetColor` again before drawing that new shape:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  // put paint on the paint brush
+  ofSetColor(200, 0, 190);
+  
+  // draw a circle at that random position, with the color
+  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
+  
+  // this rectangle will also use the same color
+  ofDrawRectangle(0, 0, 100, 300);
+  
+  // dip paintbrush in a new color of paint
+  ofSetColor(0, 255, 0);
+  
+  ofDrawRectangle(300, 500, 300, 50);
+}
+```
+
+![Example of shapes with different colors](colors.png)
+
+There's a function called `ofNoFill()` we can use to draw unfilled shapes. We can also use of `ofSetLineWidth()` to set the line size.
+
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  
+  ofNoFill();
+  ofSetLineWidth(5);
+
+  // put paint on the paint brush
+  ofSetColor(200, 0, 190);
+  
+  // draw a circle at that random position, with the color
+  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
+  
+  // this rectangle will also use the same color
+  ofDrawRectangle(0, 0, 100, 300);
+  
+  // dip paintbrush in a new color of paint
+  ofSetColor(0, 255, 0);
+  
+  ofDrawRectangle(300, 500, 300, 50);
+}
+```
+
+![Example of shapes with outlines](colors_outlined.png)
+
 
 
 
@@ -45,7 +389,8 @@ width, and height. Your completed function should have 4 parameters: `x`, `y`, `
 
 ### Parameters
 
-TODO: change this example to something you can't do with ofTranslate
+Recall from [Day 1](../1_graphics_variables_functions) that we created our own custom function that drew a letter (the example we gave was `drawA`). This function was a like a little mini program that we could run in our larger program. Let's create some more mini programs.
+
 
 We talked about how there are two motivations for functions: **organization** and **reusability**. Now let's cover an example of how we might use functions for reusability.
 
@@ -153,177 +498,10 @@ When we call `drawA(0)` or `drawA(300)`, we are initializing the value of `offse
 
 
 
-### Logging things to the console
-
-First, let's learn how to log things to the console. This is useful for printing out the values of functions and variables.
-
-```cpp
-void ofApp::draw() {
-    cout << ofGetWidth() << endl;
-}
-```
-
-The `<<` here is a special C++ syntax that allows us to send output to the console. We can chain together multiple parts of output using `<<`. In the above example, we're printing out the width of the window, and then appending an `endl`. The `endl` stands for "end line", and adds a line break to the output (the same as when you hit "return" on your keyboard).
-
-### Functions that return values
-
-We'll then cover a host of useful openFrameworks functions.
-
-- `ofGetWidth()`, `ofGetHeight()` — get the width and height of the window
-- `ofGetElapsedTimef()` — get the number of seconds since the program has started
-- `ofRandom(max)`, `ofRandom(min, max)` — generate random numbers in a specified range
-
-There's something special about all of these functions: they _return_ a value. What does it mean for a function to return a value? It means that the function sends the value back to your code. For example:
-
-```cpp
-// x will be set to a random number returned by
-// ofGetRandom, between 0 - 1.
-float x = ofRandom(1);
-```
-
-You can visualize this by imagining that the function is replaced by a number that it returns. You can picture the line above turning into the code below when the `ofGetRandom()` function returns a value.
-
-```cpp
-// let's pretend ofRandom returned 0.45
-float x = 0.45;
-```
-
-### ofRandom
-
-Let's focus on this `ofGetRandom()` function some more. We can try passing a more interesting parameter to it:
-
-```cpp
-void ofApp::draw() {
-    cout << ofRandom(mouseX) << endl;
-}
-```
-
-In this example, we're generating random numbers that are between 0 and `mouseX`. We can change the range by adjusting the mouse. What about the following code?
-
-```cpp
-void ofApp::draw() {
-  cout << ofRandom(mouseX, mouseY) << endl;
-}
-```
-
-Now we're generating random numbers between `mouseX` and `mouseY`. We can change the range by moving the mouse around the screen. We can discuss what the range would be at different (x, y) positions in the window. Next we're going to save a random value in a variable, and use it to draw something.
-
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-
-  // generate a random number between 0 and the width
-  float xPos = ofRandom(ofGetWidth());
-
-  // generate a random number between 0 and the height
-  float yPos = ofRandom(ofGetHeight());
-
-  // draw a circle at that random position
-  ofDrawCircle(xPos, yPos, 10);
-}
-```
-
-Running this program causes a circle to flicker around the screen. Every frame, a new random position is chosen.
-
-Let's touch on a small syntax detail. If we want, we don't need to save the `ofRandom` values to variables — we can insert them directly into the call to `ofDrawCircle`:
-
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-
-  // draw a circle at that random position
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-}
-```
-
-This code has an identical effect to the previous version, but is more succinct. There is not really a preference for either style; one is more verbose, but potentially more clear. The other is shorter but potentially harder to understand.
-
-### Color
-
-We use the function `ofSetColor(red, blue, green)` to choose colors. Recalling the painter's algorithm from day 1: openFrameworks models its graphics functions after a painter painting on a canvas. When we call `ofSetColor`, it's analogous to a painter dipping their paintbrush in a bucket of paint. For example:
-
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-
-  // put paint on the paint brush
-  ofSetColor(0, 70, 190);
-
-  // draw a circle at that random position, with the color
-  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
-}
-```
-
-It's important to understand that the color _stays on the paintbrush_ until we set a different color.
-
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-
-  // put paint on the paint brush
-  ofSetColor(0, 70, 190);
-
-  // draw a circle at that random position, with the color
-  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
-
-  // this rectangle will also use the same color
-  ofDrawRectangle(0, 0, 100, 300);
-}
-```
-
-This gets into a detail about openFrameworks: it maintains state behind the scene. It's like a drawing machine with lots of buttons and switches and an internal state. When we call `ofSetColor`, we're setting the state of this machine.
-
-To draw a new shape with a different color, we can call `ofSetColor` again before drawing that new shape:
-
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-  
-  // put paint on the paint brush
-  ofSetColor(200, 0, 190);
-  
-  // draw a circle at that random position, with the color
-  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
-  
-  // this rectangle will also use the same color
-  ofDrawRectangle(0, 0, 100, 300);
-  
-  // dip paintbrush in a new color of paint
-  ofSetColor(0, 255, 0);
-  
-  ofDrawRectangle(300, 500, 300, 50);
-}
-```
-
-![Example of shapes with different colors](colors.png)
-
-There's a function called `ofNoFill()` we can use to draw unfilled shapes. We can also use of `ofSetLineWidth()` to set the line size.
 
 
-```cpp
-void ofApp::draw(){
-  ofBackground(0);
-  
-  ofNoFill();
-  ofSetLineWidth(5);
 
-  // put paint on the paint brush
-  ofSetColor(200, 0, 190);
-  
-  // draw a circle at that random position, with the color
-  ofDrawCircle(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 10);
-  
-  // this rectangle will also use the same color
-  ofDrawRectangle(0, 0, 100, 300);
-  
-  // dip paintbrush in a new color of paint
-  ofSetColor(0, 255, 0);
-  
-  ofDrawRectangle(300, 500, 300, 50);
-}
-```
 
-![Example of shapes with outlines](colors_outlined.png)
 
 
 ### Using the setup function
@@ -355,7 +533,13 @@ hello from draw!
 ...
 ```
 
-As you can see, the setup line is printed just once at the beginning of the program, while the draw line is printed continuously afterwards.
+As you can see, the setup line is printed just once at the beginning of the program, while the draw line is printed continuously afterwards. From now on, we're going to begin putting code in either the `setup` function or `draw` function — or often both!
+
+
+
+
+
+
 
 ### Using variables in the ofApp.h file
 
@@ -648,140 +832,7 @@ void ofApp::draw(){
 
 ---
 
-## Looping
 
-Next we'll learn about another control structure called loops. To motivate this, let's say we wanted to draw a ton of circles every frame:
-
-```cpp
-void ofApp::draw() {
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-}
-```
-
-This does what we want, but it's redundant, and programmers hate redundancy. We're repeating ourselves too much. In this case, we can use a for loop to automate this repetition.
-
-```cpp
-void ofApp::draw() {
-  // run ofDrawCircle 10 times
-  for (int i = 0; i < 10; i = i + 1) {
-    ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  }
-}
-```
-
-For loops are very syntax heavy, and we'll become more familiar with the syntax over time. For now, what's important to understand is that the code inside of the for loop will run 10 times. We can adjust the number of times the for loop runs by changing the _loop bound_:
-
-```cpp
-void ofApp::draw() {
-  // run ofDrawCircle 100 times
-  for (int i = 0; i < 100; i = i + 1) {
-    ofDrawCircle(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()), 10);
-  }
-}
-```
-
-A more sophisticated example of looping is to use the looping variable `i`. The first thing to understand is that we can decide how we increment `i`. Let's look at a few examples:
-
-```cpp
-for (int i = 0; i < 10; i = i + 1) {
-  cout << i << endl;
-}
-```
-
-This prints out:
-
-```
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-```
-
-We can adjust the loop increment by adding 2 to `i` rather than 1:
-
-```cpp
-for (int i = 0; i < 10; i = i + 2) {
-  cout << i << endl;
-}
-```
-
-This prints out:
-
-```
-0
-2
-4
-6
-8
-```
-
-Now let's use this `i` value in order to draw a series of circles:
-
-```cpp
-void ofApp::draw() {
-  for (int i = 0; i < ofGetWidth(); i = i + 20) {
-    ofDrawCircle(i, ofGetHeight() * 0.5, 10);
-  }
-}
-```
-
-![Example of line of circles](circles.png)
-
-
-### Syntax of a for loop
-
-Let's review the specific pieces of the for loop syntax:
-
-```cpp      
-for (initialization; condition; update) {
-  // body
-}
-```
-
-- *initialization*: runs once at the beginning of the for loop and sets up the _looping variable_.
-- *condition*: determines when the loop stops running. If the expression here evaluates to true, then the loop continues to run.
-- *update*: updates the looping variable by some increment
-- *body*: the code that runs every time the condition is true
-
-### Nested for loops
-
-We can put for loops inside of for loops. A common use case of this structure in creative coding is to draw grids. In the following example, we have one for loop that runs over the *height*, and inside of that, we have another loop that runs over the *width*. We draw circles using the looping variables `i` and `j`.
-
-```cpp      
-void ofApp::draw() {
-  ofBackground(0);
-  
-  for (int j = 0; j < ofGetHeight(); j = j + 30) {
-    for (int i = 0; i < ofGetWidth(); i = i + 30) {
-      ofDrawCircle(i, j, 10);
-    }
-  }
-}
-```
-
-This code produces the following image:
-
-![a grid of circles](grid.png)
 
 
 
@@ -792,6 +843,41 @@ This code produces the following image:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Functions that return values
+
+We'll then cover a host of useful openFrameworks functions.
+
+- `ofGetWidth()`, `ofGetHeight()` — get the width and height of the window
+- `ofGetElapsedTimef()` — get the number of seconds since the program has started
+- `ofRandom(max)`, `ofRandom(min, max)` — generate random numbers in a specified range
+
+There's something special about all of these functions: they _return_ a value. What does it mean for a function to return a value? It means that the function sends the value back to your code. For example:
+
+```cpp
+// x will be set to a random number returned by
+// ofGetRandom, between 0 - 1.
+float x = ofRandom(1);
+```
+
+You can visualize this by imagining that the function is replaced by a number that it returns. You can picture the line above turning into the code below when the `ofGetRandom()` function returns a value.
+
+```cpp
+// let's pretend ofRandom returned 0.45
+float x = 0.45;
+```
 
 
 ### Review of functions
