@@ -101,80 +101,6 @@ You can see that there's a similar pattern to a for loop, where we initialize a 
 
 We won't be using while loops anymore today, but good to mention in case students see it in the future.
 
-### Drawing with for loops
-
-You might have drawn this pattern when you were bored in class as a kid.
-
-![a pattern of lines](lines.png)
-
-How could we produce it with code? Because we're drawing many lines, we know we're going to use a for loop. Let's say we want to draw this picture with 100 lines.
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-  for (int i = 0; i < 100; i++) {
-    // what goes here?
-  }
-}
-```
-
-There's a pattern to where the lines start and end which might be easier to work out on paper or whiteboard. The first thing you need to emphasize is that we need to count _forward_ and _backwards_ at the same time. So let's add a backwards counter inside of our loop:
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-  for (int i = 0; i < 100; i++) {
-    int backwards = 100 - 1 - i;
-  }
-}
-```
-
-Why do we have the `- 1` above? We want our backwards counter to start at `99`, because our forwards counter `i` ends at `99`. If you're confused about why `i` ends at 99, think carefully about the bounds of the loop (`i < 100`).
-
-Now let's draw the lines:
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-  
-  for (int i = 0; i < 100; i++) {
-    // i counts forwards, but we also need a counter
-    // that goes backwards
-    int backwards = 100 - 1 - i;
-    
-    float x1 = ofGetWidth() / 100 * i;
-    float y1 = 0;
-    float x2 = 0;
-    float y2 = ofGetHeight() / 100 * backwards;
-    ofDrawLine(x1, y1, x2, y2);
-  }
-}
-```
-
-This produces the picture that we want. It's doing a lot of tricky math, so again it might be helpful to simulate the steps here and draw lines on the white board.
-
-One final touch: we can factor out the `100` into a variable so we don't have to keep repeating ourselves:
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-  
-  int numSegments = 100;
-
-  for (int i = 0; i < numSegments; i++) {
-    // i counts forwards, but we also need a counter
-    // that goes backwards
-    int backwards = numSegments - 1 - i;
-    
-    float x1 = ofGetWidth() / numSegments * i;
-    float y1 = 0;
-    float x2 = 0;
-    float y2 = ofGetHeight() / numSegments * backwards;
-    ofDrawLine(x1, y1, x2, y2);
-  }
-}
-```
-
 ### Objects
 
 Up until now, we've been using primitive types for our variables (`float`, `int`). These variables store only _one_ thing. But there are more complex types of variables in C++ called **objects**. Objects are containers for multiple variables. An example of an object type is an `ofPoint`.
@@ -337,7 +263,7 @@ myVector.push_back(ofPoint(999, 4));
 
 This syntax is a little new. When we call `ofPoint(5, 2)`, we're constructing a new point. Then we write `myVector.push_back(ofPoint(5, 2));`, we're adding a new point to the end of the vector.
 
-### Drawing with vectors
+### Mouse interaction with vector
 
 Vectors are very useful for creative coding, because they allow us to remember an arbitrarily large number of values. For example, we can use a vector to store all of the previous mouse positions. Add this to your `.h` file:
 
@@ -432,6 +358,113 @@ void ofApp::draw() {
 ```
 
 The line `previousPoints.erase(previousPoints.begin());` removes the first element of the list. If you run this program, you'll see a line that trails 100 points behind the mouse.
+
+### Functions that return values
+
+Some functions in C++ return a value. We've already seen some of these in action, although we haven't explicitly called them out:
+
+- `ofGetWidth()`, `ofGetHeight()` — get the width and height of the window
+- `ofRandom(max)`, `ofRandom(min, max)` — generate random numbers in a specified range
+
+What does it mean for a function to return a value? It means that the function sends the value back to your code. For example:
+
+```cpp
+// x will be set to a random number returned by
+// ofGetRandom, between 0 - 1.
+float x = ofRandom(1);
+```
+
+You can visualize this by imagining that the function is replaced by a number that it returns. You can picture the line above turning into the code below when the `ofGetRandom()` function returns a value.
+
+```cpp
+// let's pretend ofRandom returned 0.45
+float x = 0.45;
+```
+
+A return value is like the opposite of a parameter. While parameters are used to pass information *to* a function, returns are used to pass information *from* a function.
+
+### Math functions in C++
+
+We've covered the use of mathematical operators in C++ (like `+` or `/`). C++ also includes a library of common math function, like `sin` and `sqrt`. These functions all take at lease one parameter and return a result. For example, to compute the sin of 4:
+
+```cpp
+float result = sin(4);
+```
+
+| C++ | computes... | useful for... |
+|----------|-------------|---------------|
+| `sin(x)` | sine of x | oscillation, circular shapes |
+| `cos(x)` | cosine of x | oscillation, circular shapes |
+| `sqrt(x)` | square root of x | distance calculations |
+| `abs(x)` | absolute value (non-negative) of x | keeping values positive |
+| `pow(x, n)` | x raised to the n-th power | |
+| `floor(x)` | x rounded down (ex: 0.9 becomes 0) | |
+| `ceil(x)` | x rounded up (ex: 0.1 becomes 1) | |
+| `atan2(y, x)` | arctangent of y / x | computing an angle from an (x, y) |
+
+These functions can be used in combination with the operators we've already learned. For example:
+
+```cpp
+float result1 = sin(x * 5) + 20;
+```
+
+## Writing a function with input and output
+
+Let's get back to [our previous drawing example](#Mouse-interaction-with-vector). Suppose we want the thickness of our line to relate to the speed at which the mouse moves. In other words, the farther apart points in our vector, the thicker we should draw the line. We can use the distance formula to calculate the distance between two points:
+
+```cpp
+float dx = point1.x - point2.x;
+float dy = point1.y - point2.y;
+float distance = sqrt(dx * dx + dy * dy);
+```
+
+Placing this into our draw function allows us to change the size of the line:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+  
+  for (int i = 1; i < previousPoints.size() - 1; i = i + 1) {
+    float dx = previousPoints[i - 1].x - previousPoints[i].x;
+    float dy = previousPoints[i - 1].y - previousPoints[i].y;
+    float distance = sqrt(dx * dx + dy * dy);
+    
+    float x1 = previousPoints[i - 1].x;
+    float y1 = previousPoints[i - 1].y;
+    float x2 = previousPoints[i].x;
+    float y2 = previousPoints[i].y;
+
+    ofSetLineWidth(d / 5.0);
+    ofDrawLine(x1, y1, x2, y2);
+  }
+  
+  if (previousPoints.size() > 100) {
+    previousPoints.erase(previousPoints.begin());
+  }
+}
+```
+
+// TODO: insert video
+
+One thing you might notice is that when the line thickness changes rapidly, we get an ugly jagged line. We could make the line smoother by taking the distance of previous two line segments and averaging them. The diagram below shows what we mean by "previous two line segments":
+
+![distances](distances.svg)
+
+Let's modify our code to compute the two previous distances:
+
+
+
+
+
+
+
+// TODO
+
+
+
+
+
 
 ## Homework 3: Rain
 

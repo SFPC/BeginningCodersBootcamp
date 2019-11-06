@@ -1,3 +1,37 @@
+10/next
+- day 3:
+    - finish up "Writing a function with input and output" example
+    - figure out exercises
+
+
+10/6
+- day 3:
+    - "Functions that return values"    - mostly remove this, but keep some language for below
+    - "Math functions in C++"           - talk about returns, create table of math functions
+    - "Writing a function with input and output" — example with distance function
+
+- translations now covered in day 1, remove from day 4
+- motivate day 2 "Parameters" better
+    - maybe should change width / height of letter?
+
+- generate table of contents for everything
+    - look at balance of exercises
+
+day 1: draw a scene
+    functions and translations
+day 2: bouncing ball
+    draw loop, member variables, boolean, if statement
+day 3: rain / letter loop / stars?
+    objects (ofPoint), functions with parameters and returns
+
+    - need to motivate parameters
+    - need to motivate returns
+    - homework assignment should naturally require writing your own function
+
+day 4: 3d scene
+    3d graphics, transformations, rotations
+
+
 - robby conversation
     - more variable examples in day 1
     - more expressions in day 1

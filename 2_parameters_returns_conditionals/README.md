@@ -7,9 +7,6 @@ p.y = 20;
 
 ofPoint p(10, 20);
 
-
-TODO: talk about boolean logic here more
-
 # Day 2: Random numbers, control flow and returns
 
 - **Lecture time:** 3 hours
@@ -271,29 +268,80 @@ This code produces the following image:
 
 ### Exercise 1:
 
+TODO: create lead up example to this w nested for loops
+TODO: rewrite below as exercise
 
+You might have drawn this pattern when you were bored in class as a kid.
 
+![a pattern of lines](lines.png)
 
+How could we produce it with code? Because we're drawing many lines, we know we're going to use a for loop. Let's say we want to draw this picture with 100 lines.
 
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  for (int i = 0; i < 100; i++) {
+    // what goes here?
+  }
+}
+```
 
+There's a pattern to where the lines start and end which might be easier to work out on paper or whiteboard. The first thing you need to emphasize is that we need to count _forward_ and _backwards_ at the same time. So let's add a backwards counter inside of our loop:
 
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  for (int i = 0; i < 100; i++) {
+    int backwards = 100 - 1 - i;
+  }
+}
+```
 
+Why do we have the `- 1` above? We want our backwards counter to start at `99`, because our forwards counter `i` ends at `99`. If you're confused about why `i` ends at 99, think carefully about the bounds of the loop (`i < 100`).
 
+Now let's draw the lines:
 
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  
+  for (int i = 0; i < 100; i++) {
+    // i counts forwards, but we also need a counter
+    // that goes backwards
+    int backwards = 100 - 1 - i;
+    
+    float x1 = ofGetWidth() / 100 * i;
+    float y1 = 0;
+    float x2 = 0;
+    float y2 = ofGetHeight() / 100 * backwards;
+    ofDrawLine(x1, y1, x2, y2);
+  }
+}
+```
 
+This produces the picture that we want. It's doing a lot of tricky math, so again it might be helpful to simulate the steps here and draw lines on the white board.
 
+One final touch: we can factor out the `100` into a variable so we don't have to keep repeating ourselves:
 
+```cpp
+void ofApp::draw() {
+  ofBackground(0);
+  
+  int numSegments = 100;
 
-
-
-
-
-
-
-
-
-
-
+  for (int i = 0; i < numSegments; i++) {
+    // i counts forwards, but we also need a counter
+    // that goes backwards
+    int backwards = numSegments - 1 - i;
+    
+    float x1 = ofGetWidth() / numSegments * i;
+    float y1 = 0;
+    float x2 = 0;
+    float y2 = ofGetHeight() / numSegments * backwards;
+    ofDrawLine(x1, y1, x2, y2);
+  }
+}
+```
 
 ### Color
 
@@ -381,10 +429,6 @@ void ofApp::draw(){
 ```
 
 ![Example of shapes with outlines](colors_outlined.png)
-
-
-
-
 
 
 ### Parameters
@@ -851,213 +895,6 @@ void ofApp::draw(){
 
 
 
-
-
-
-
-
-### Functions that return values
-
-We'll then cover a host of useful openFrameworks functions.
-
-- `ofGetWidth()`, `ofGetHeight()` — get the width and height of the window
-- `ofGetElapsedTimef()` — get the number of seconds since the program has started
-- `ofRandom(max)`, `ofRandom(min, max)` — generate random numbers in a specified range
-
-There's something special about all of these functions: they _return_ a value. What does it mean for a function to return a value? It means that the function sends the value back to your code. For example:
-
-```cpp
-// x will be set to a random number returned by
-// ofGetRandom, between 0 - 1.
-float x = ofRandom(1);
-```
-
-You can visualize this by imagining that the function is replaced by a number that it returns. You can picture the line above turning into the code below when the `ofGetRandom()` function returns a value.
-
-```cpp
-// let's pretend ofRandom returned 0.45
-float x = 0.45;
-```
-
-
-### Review of functions
-
-Let's back up and review functions for a bit. You might remember functions from math class. A function is a mathematical object that takes an input and spits out an output. For example:
-
-```
-y = f(x)
-```
-
-The function `f` here takes a parameter `x` and spits out an output. c++ functions work the same way. They can take parameters, perform some computation, and return an output. We can actually use many functions from math in c++. For example, the `sin` function.
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-
-  float x = sin(ofGetElapsedTimef());
-  ofDrawCircle(ofGetWidth() / 2 + x, ofGetHeight() / 2, 10);
-}
-```
-
-Remember from math class that as we increase the value we put into `sin(...)`, it spits out a value that oscillates between +1 and -1. If we consider that we're putting `ofGetElapsedTimef()` into our sin function, then we know that our `float x` variable will be set to values between +1 and -1 in an oscillating pattern.
-
-However, this oscillation is barely visible, because it is only moving 1 pixel to the left and right. So let's scale up this oscillation by multiplying the result of our `sin` function:
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-
-  float x = sin(ofGetElapsedTimef()) * 100;
-  ofDrawCircle(ofGetWidth() / 2 + x, ofGetHeight() / 2, 10);
-}
-```
-
-Now you should see the circle moving from left to right and back again! `sin` is very useful in creative coding because it repeats for infinity as you plug larger and larger values into it.
-
-// TODO: rewrite this exercise to be a big bigger
-
-### Exercise 2: Use sin to animate a circle
-
-Building off the example above, let's say we want our circle to move from the far left hand side of the window to the far right hand side. What should we multiply our `sin` function by to get that effect?
-
-#### Exercise 2 solution
-
-```cpp
-void ofApp::draw() {
-  ofBackground(0);
-
-  float x = sin(ofGetElapsedTimef()) * ofGetWidth() / 2;
-  ofDrawCircle(ofGetWidth() / 2 + x, ofGetHeight() / 2, 10);
-}
-```
-
-## Writing a function with input and output
-
-Let's emphasize this one more time: the `sin` function _takes an input and returns an output_. We can write our own functions that do the same thing. We've already written a function that takes input in the form of parameters. If we want to write a function that also returns an output, we need to declare it in our `ofApp.h` file:
-
-```cpp
-class ofApp : public ofBaseApp{
-
-    public:
-        void setup();
-        void update();
-        void draw();
-
-        void keyPressed(int key);
-        void keyReleased(int key);
-        void mouseMoved(int x, int y );
-        void mouseDragged(int x, int y, int button);
-        void mousePressed(int x, int y, int button);
-        void mouseReleased(int x, int y, int button);
-        void mouseEntered(int x, int y);
-        void mouseExited(int x, int y);
-        void windowResized(int w, int h);
-        void dragEvent(ofDragInfo dragInfo);
-        void gotMessage(ofMessage msg);
-  
-        float transform(float input);
-};
-```
-
-The line `float transform(float input);` declares a new function which accepts a `float` as input and returns a `float` as output. Now we must define our function in the `ofApp.cpp` file. Add this code anywhere in the `.cpp` file:
-
-```cpp
-float ofApp::transform(float input) {
-  return input;
-}
-```
-
-We've introduced a new concept here: the `return` keyword. This "sends out" a value from the function, in the same way parameters "send in" values to the function. We can call our function from the draw function:
-
-```cpp
-float output = transform(1);
-cout << output << endl;
-```
-
-In this case, the `1` parameter is passed into `transform`, which then immediately returns it. So what will this print?
-
-```
-1
-```
-
-Now let's change our transform function:
-
-```cpp
-float ofApp::transform(float input) {
-  return input + 1;
-}
-```
-
-Our transform function now takes whatever the input parameter is, adds 1 to it, and returns it. Running our program again produces the following output:
-
-```
-2
-```
-
-This isn't a very useful function right now, so let's construct a more realistic example with a sophisticated function. In this example, we're going to create a circle that follows the x position of the mouse. But rather than having the circle snap exactly to the position of the mouse, it will "ease" into the mouse position.
-
-Update the `.h` file with a variable `x`:
-
-```cpp
-class ofApp : public ofBaseApp {
-
-    public:
-        void setup();
-        void update();
-        void draw();
-
-        void keyPressed(int key);
-        void keyReleased(int key);
-        void mouseMoved(int x, int y );
-        void mouseDragged(int x, int y, int button);
-        void mousePressed(int x, int y, int button);
-        void mouseReleased(int x, int y, int button);
-        void mouseEntered(int x, int y);
-        void mouseExited(int x, int y);
-        void windowResized(int w, int h);
-        void dragEvent(ofDragInfo dragInfo);
-        void gotMessage(ofMessage msg);
-  
-        float transform(float input);
-        float x;
-};
-```
-
-Now let's update our draw and setup function in the `ofApp.cpp` file:
-
-
-```cpp
-void ofApp::setup(){
-  x = ofGetWidth() / 2;
-}
-
-void ofApp::draw(){
-  ofBackground(0);
-  x = transform(x);
-  ofDrawCircle(x, ofGetHeight() / 2, 10);
-}
-
-```
-
-This will initialize the variable `x` to the middle of the window, and then continuously draw a circle at that x position. Every frame, our x position will be transformed by the `transform` function. Let's update our transform function with an *easing* algorithm:
-
-```cpp
-float ofApp::transform(float input) {
-  float t = 0.99;
-  float u = 1.0 - t;
-  return u * mouseX + t * input;
-}
-```
-
-Now this function is doing something fancy: it's taking the input and mixing it with the current position of the mouse, and then returning that new value. What do we mean by "mixing"? The expression `u * mouseX + t * input` takes a fraction of the `mouseX` variable and sums it with a fraction of the `input` value, producing a new value which is a mix both both.
-
-Remember, we're calling this function in our draw function, and using it to transform the x value:
-
-```cpp
-x = transform(x);
-```
-
-If we run the program now, we'll see a circle that follows the mouse, but "eases" into position rather than snapping into position.
 
 
 ## Homework 2: Bouncing circle (2 hours)
