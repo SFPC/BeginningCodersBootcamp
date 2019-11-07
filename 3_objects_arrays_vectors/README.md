@@ -418,7 +418,7 @@ float dy = point1.y - point2.y;
 float distance = sqrt(dx * dx + dy * dy);
 ```
 
-Placing this into our draw function allows us to change the size of the line:
+Placing this into our draw function allows us to change the size of the line. Note that the for loop starts at `i = 1`, rather than `i = 0`. Why is this?
 
 ```cpp
 void ofApp::draw(){
@@ -445,7 +445,7 @@ void ofApp::draw(){
 }
 ```
 
-// TODO: insert video
+// TODO: day3-line-thickness movie
 
 One thing you might notice is that when the line thickness changes rapidly, we get an ugly jagged line. We could make the line smoother by taking the distance of previous two line segments and averaging them. The diagram below shows what we mean by "previous two line segments":
 
@@ -453,8 +453,98 @@ One thing you might notice is that when the line thickness changes rapidly, we g
 
 Let's modify our code to compute the two previous distances:
 
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+  
+  for (int i = 2; i < previousPoints.size(); i = i + 1) {
+    float dx1 = previousPoints[i - 2].x - previousPoints[i - 1].x;
+    float dy1 = previousPoints[i - 2].y - previousPoints[i - 1].y;
+    float distance1 = sqrt(dx1 * dx1 + dy1 * dy1);
+    
+    float dx2 = previousPoints[i - 1].x - previousPoints[i].x;
+    float dy2 = previousPoints[i - 1].y - previousPoints[i].y;
+    float distance2 = sqrt(dx2 * dx2 + dy2 * dy2);
+    
+    float average = (distance1 + distance2) / 2.0;
 
+    float x1 = previousPoints[i - 1].x;
+    float y1 = previousPoints[i - 1].y;
+    float x2 = previousPoints[i].x;
+    float y2 = previousPoints[i].y;
+    ofSetLineWidth(average / 5.0);
+    ofDrawLine(x1, y1, x2, y2);
+  }
+  
+  if (previousPoints.size() > 100) {
+    previousPoints.erase(previousPoints.begin());
+  }
+}
+```
 
+(Note that in order for this to work, we need to start our loop at `i = 2` rather than `i = 1`.)
+
+This results in a subtly smoother line!
+
+// TODO: day3-line-thickness-2 movie
+
+You might see that the code to calculate the distance is redundant. This chunk of code takes two pieces of data (two positions) and computes a value (the distance). This is a prime candidate to factor out into a function that returns something!
+
+First, we need to declare our function in the `ofApp.h` file:
+
+```cpp
+class ofApp : public ofBaseApp{
+
+  public:
+    void setup();
+    void update();
+    void draw();
+  
+    float distance(ofPoint p1, ofPoint p2);
+    // other functions not shown
+}
+```
+
+When we've declared custom functions in the past, they had the `void` keyword in front of them. We didn't explain what this meant, but it will make more sense now. `void` means that the function _returns nothing_. If we put `float` rather than `void` in front of our function name, that means that our function returns a `float` (in the same way that the `sin` function returns a float).
+
+Now let's go back to the `ofApp.cpp` file and write our function definition:
+
+```cpp
+float ofApp::distance(ofPoint p1, ofPoint p2) {
+  float dx = p1.x - p2.x;
+  float dy = p1.y - p2.y;
+  return sqrt(dx * dx + dy * dy);
+}
+```
+
+This function takes two point objects and returns the distance between those two points. We can now rewrite our for loop from before using our new custom function:
+
+```cpp
+void ofApp::draw(){
+  ofBackground(0);
+  previousPoints.push_back(ofPoint(mouseX, mouseY));
+
+  for (int i = 2; i < previousPoints.size(); i = i + 1) {
+    float distance1 = distance(previousPoints[i - 2], previousPoints[i - 1]);
+    float distance2 = distance(previousPoints[i - 1], previousPoints[i]);
+    float average = (distance1 + distance2) / 2.0;
+
+    float x1 = previousPoints[i - 1].x;
+    float y1 = previousPoints[i - 1].y;
+    float x2 = previousPoints[i].x;
+    float y2 = previousPoints[i].y;
+    ofSetLineWidth(average / 5.0);
+    ofDrawLine(x1, y1, x2, y2);
+  }
+
+  if (previousPoints.size() > 100) {
+    previousPoints.erase(previousPoints.begin());
+  }
+}
+```
+
+We've replaced all of our distance computation code with calls to our new `distance` function, which reduces the redundancy in our code! Now that we've written a distance function, we could use it for other things too. For quick example you might try is take the average of 3 or 4 segments rather than just 2 — this will further smooth out the line.
 
 
 
