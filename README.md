@@ -1,5 +1,5 @@
 # Beginning Coders Bootcamp
-A one week program to introduce the foundations of coding to beginners by creating visual art and animations in openFrameworks.
+A one week program to introduce the foundations of coding to beginners by creating visual art and animations in openFrameworks. This 5 day session will be open both to incoming SFPC students and anyone who wants to learn to code.
 
 ## Spring 2020 session, Monday March 23rd – Friday March 27th  
 Instructor: [Robby Kraft](http://robbykraft.com/)  
@@ -7,8 +7,6 @@ Teaching Assistant: TBD
 Location: School for Poetic Computation | 155 Bank St, New York, NY 10014  
 Class Time: 10am - 1pm  
 Office Hours: Thursdays 2pm to 4pm (or by appointment)  
-
-School for Poetic Computation’s Bootcamp introduces the foundations of coding to beginners by creating visual art and animations in openFrameworks. This 5 day session will be open both to incoming SFPC students and anyone who wants to learn to code.
 
 During this week students will be coding in C++, learning concepts like variables, memory, and scope; branching, looping, boolean evaluations, and logic; functions, recursion, and events; object-oriented design; and working with media like video, sound, and responding to keyboard and mouse inputs. Students will become competent in Xcode/Visual Studio, GitHub, and openFrameworks.
 
@@ -55,7 +53,6 @@ TODO: "turn to student next to you" moments
 - Use variables to reduce redundancy
 - Declare and define functions
 - Generalize a function with parameters
-
 - ADD: introduce cout here earlier
 - ADD: strings?
 
@@ -73,7 +70,6 @@ TODO: "turn to student next to you" moments
 - Use the `sin` function for animation
 - Write functions that return values
 - Understand state updates of the form `x = transform(x)`
-
 - ADD: Celsius / Fahrenheit example
 - ADD: another example?
 - ADD: Boolean types and logic
