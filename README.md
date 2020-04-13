@@ -22,7 +22,8 @@ Before the first day of class, please try installing both an IDE and openFramewo
 - Note that Xcode is fairly large, you should clear space on your hard drive if necessary.  If you run into any space issues, we recommend the free app [OmniDiskSweeper](https://www.omnigroup.com/more) to help see where you can gain/free space.
 
 ### Windows
-- Install [Visual Studio Community 2017](https://www.techspot.com/downloads/6278-visual-studio.html). Note that this is an older version of Visual Studio; please install this older version even if you have a newer version installed.
+- Install [Visual Studio Community 2017](https://www.techspot.com/downloads/6278-visual-studio.html).  Choose the free community edition. Note that this is an older version of Visual Studio; please install this older version even if you have a newer version installed.
+- If you have visual studio 2019 installed, you can update your projects when you load them to work with the newer tool. 
 - Install [openFrameworks for Visual Studio.](https://openframeworks.cc/download/)
 - More detailed setup guide is [here](https://openframeworks.cc/setup/vs/). We will also be able to help you in class.
 
