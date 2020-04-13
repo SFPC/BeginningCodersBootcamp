@@ -14,11 +14,12 @@ During this week students will be coding in C++, learning concepts like variable
 Before the first day of class, please try installing both an IDE and openFrameworks. An IDE stands for “integrated development environment” and is what allows you to run programming code on your computer. openFrameworks is a coding library that you’ll be using extensively at SFPC. Here are specific instructions for Mac and Windows:
 
 ### Mac OSX
-- Install [Xcode 10](https://apps.apple.com/us/app/xcode/id497799835?mt=12) from the app store. If you have an older version of Xcode already installed, we recommend upgrading to the latest version.
-- When installing Xcode, you may be prompted to update your operating system. We recommend you do this.
+- Install the latest version of Xcode [Xcode 11](https://apps.apple.com/us/app/xcode/id497799835?mt=12) (or xcode 10) from the app store. If you have an older version of Xcode already installed, we recommend upgrading to the latest version.  You can also install multiple versions of xcode side by side if needed (see details [here](https://medium.com/@hacknicity/working-with-multiple-versions-of-xcode-e331c01aa6bc)).
+- If you need to install earlier version of xcode (xcode 10 should work) because of your operating system, you can find them [here](https://developer.apple.com/download/more/?q=xcode).  You will need a developer login for apple but don't need a paid developer account.  
 - Download and install [openFrameworks for Mac.](https://openframeworks.cc/download/)
 - There are more details instructions [here](https://openframeworks.cc/setup/xcode/) to test your setup, you only need the first two sections: “First Steps” and “Testing your setup”.
 - We recommend you use the latest version of OF and Xcode. If this is not possible, just drop us an email and we will help you sort it out.
+- Note that Xcode is fairly large, you should clear space on your hard drive if necessary.  If you run into any space issues, we recommend the free app [OmniDiskSweeper](https://www.omnigroup.com/more) to help see where you can gain/free space.
 
 ### Windows
 - Install [Visual Studio Community 2017](https://www.techspot.com/downloads/6278-visual-studio.html). Note that this is an older version of Visual Studio; please install this older version even if you have a newer version installed.
