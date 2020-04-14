@@ -1,14 +1,14 @@
-# Beginning Coders Bootcamp
-A one week program to introduce the foundations of coding to beginners by creating visual art and animations in openFrameworks. This 5 day session will be open both to incoming SFPC students and anyone who wants to learn to code.
+# Creative Coding Bootcamp
+A three week program to introduce the foundations of coding to beginners by creating visual art and animations in openFrameworks. This 5 course session will be open to anyone who wants to learn to code.
 
-## Spring 2020 session, Monday March 23rd – Friday March 27th  
+## Spring 2020 session, Tuesday April 21st – Tuesday May 5th  
 Instructor: [Robby Kraft](http://robbykraft.com/)  
-Teaching Assistant: TBD
-Location: School for Poetic Computation | 155 Bank St, New York, NY 10014  
-Class Time: 10am - 1pm  
-Office Hours: Thursdays 2pm to 4pm (or by appointment)  
+Teaching Assistant: [Ilona Brand](https://theilonabrand.com)
+Location: Zoom
+Class Time: Tuesdays and Thursdays 1pm - 3pm ET
+Office Hours: Approximately 3 hours of Teacher & TA support during the week based on student availability.  
 
-During this week students will be coding in C++, learning concepts like variables, memory, and scope; branching, looping, boolean evaluations, and logic; functions, recursion, and events; object-oriented design; and working with media like video, sound, and responding to keyboard and mouse inputs. Students will become competent in Xcode/Visual Studio, GitHub, and openFrameworks.
+During this course students will be coding in C++, learning concepts like variables, memory, and scope; branching, looping, boolean evaluations, and logic; functions, recursion, and events; object-oriented design; and working with media like video, sound, and responding to keyboard and mouse inputs. Students will become competent in Xcode/Visual Studio, GitHub, and openFrameworks.
 
 ## Before Class
 Before the first day of class, please try installing both an IDE and openFrameworks. An IDE stands for “integrated development environment” and is what allows you to run programming code on your computer. openFrameworks is a coding library that you’ll be using extensively at SFPC. Here are specific instructions for Mac and Windows:
