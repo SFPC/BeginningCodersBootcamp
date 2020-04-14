@@ -3,9 +3,9 @@ A three week program to introduce the foundations of coding to beginners by crea
 
 ## Spring 2020 session, Tuesday April 21st – Tuesday May 5th  
 Instructor: [Robby Kraft](http://robbykraft.com/)  
-Teaching Assistant: [Ilona Brand](https://theilonabrand.com)
-Location: Zoom
-Class Time: Tuesdays and Thursdays 1pm - 3pm ET
+Teaching Assistant: [Ilona Brand](https://theilonabrand.com)  
+Location: Zoom  
+Class Time: Tuesdays and Thursdays 1pm - 3pm ET  
 Office Hours: Approximately 3 hours of Teacher & TA support during the week based on student availability.  
 
 During this course students will be coding in C++, learning concepts like variables, memory, and scope; branching, looping, boolean evaluations, and logic; functions, recursion, and events; object-oriented design; and working with media like video, sound, and responding to keyboard and mouse inputs. Students will become competent in Xcode/Visual Studio, GitHub, and openFrameworks.
