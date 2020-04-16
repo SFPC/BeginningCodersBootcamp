@@ -22,14 +22,14 @@ Before the first day of class, please try installing both an IDE and openFramewo
 - Note that Xcode is fairly large, you should clear space on your hard drive if necessary.  If you run into any space issues, we recommend the free app [OmniDiskSweeper](https://www.omnigroup.com/more) to help see where you can gain/free space.
 
 ### Windows
-- Install [Visual Studio Community 2017](https://www.techspot.com/downloads/6278-visual-studio.html).  Choose the free community edition. Note that this is an older version of Visual Studio; please install this older version even if you have a newer version installed.
-- If you have visual studio 2019 installed, you can update your projects when you load them to work with the newer tool. 
+- Install [Visual Studio Community 2017](https://www.techspot.com/downloads/6278-visual-studio.html).  Choose the free community edition.   Once the installer loads, choose "Desktop development with C++" as what to install.  you don't need to choose any other option.  Note that this is an older version of Visual Studio.  You can work with 2019 if you have installed it for c++ development. 
+- Microsoft may ask you to sign in with your mirosoft password.  You can make one if you need to. 
+- If you have visual studio 2019 installed, you can update your projects when you load them to work with the newer tool as long as you have c++ installed and an appropriate SDK.  When you load a project, it will ask you to "retarget" it, which is updating it for 2019. 
 - Install [openFrameworks for Visual Studio.](https://openframeworks.cc/download/)
 - More detailed setup guide is [here](https://openframeworks.cc/setup/vs/). We will also be able to help you in class.
 
 ### Linux
 - QT Creator is the officially supported IDE. [Here are instructions](https://openframeworks.cc/setup/qtcreator/) for working with QT creator. If you’re using a different IDE [start here.](https://openframeworks.cc/setup/linux-install/)
-- One request -- you'll need to install a compiler -- if you are on OSX, you should install xcode.  You can install this through the OSX app store (search for xcode). If you have an older version of OSX, it may ask you update the OS.  
 
 Also, download openFrameworks for your given platform: http://openframeworks.cc/download/
 
