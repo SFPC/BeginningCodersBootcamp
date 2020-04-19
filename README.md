@@ -37,11 +37,11 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 
 ## Schedule
 
-- [Day 1: Graphics, variables and functions](1_graphics_variables_functions)
-- [Day 2: Parameters, returns and conditionals](2_parameters_returns_conditionals)
-- [Day 3: Objects, arrays and vectors](3_objects_arrays_vectors)
-- [Day 4: Polylines and classes](4_polylines_classes)
-- [Day 5: Review](5_review)
+- [Day 1: Graphics, variables, functions](01/)
+- Day 2: Parameters, returns and conditionals
+- Day 3: Objects, arrays and vectors
+- Day 4: Polylines and classes
+- Day 5: Review
 
 TODO: motivation behind each exercise (pre and post conditions / pre reqs and outcomes)
 TODO: asteroid -> astroid
