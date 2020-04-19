@@ -1,6 +1,6 @@
 # Bootcamp 01 
 
-open with a 20 minute talk about the goals of coding. what is code?
+open with a 20 minute talk about the goals of coding. what is code? [slides](https://docs.google.com/presentation/d/1LyL2s73L5CTtCaYfjDCRjG1mK-9FNm1_mgxFSXcamgQ/edit?usp=sharing)
 
 ---
 
@@ -58,3 +58,4 @@ ofFill and ofNoFill
 ## Homework
 
 your homework is to learn about functions and convert your letter into a function. [watch this video](https://www.youtube.com/watch?v=bNc5wHwXPVM)
+
