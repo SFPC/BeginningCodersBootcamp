@@ -39,68 +39,48 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 
 - [Day 1: Graphics, variables, functions](01/)
 - [Day 2: Loops and arrays](02/)
-- Day 3: Parameters, returns and conditionals
-- Day 4: Polylines and classes
-- Day 5: Review
-
-TODO: motivation behind each exercise (pre and post conditions / pre reqs and outcomes)
-TODO: asteroid -> astroid
-TODO: "turn to student next to you" moments
+- [Day 3: Animations, if-statements, classes](03/)
+- Day 4: OF objects, affine-transforms, 3D
+- Day 5: event handlers, ofxAddons
 
 ## Day 1
 
 - Create and run openFrameworks projects
 - Introduce basic C++ syntax
 - Use openFrameworks graphics functions (`ofDrawLine`, `ofDrawCircle` etc.) in the `draw` loop
-- Understand the painter's algorithm
 - Declare and assign primitive variables (`int`, `float`)
 - Use variables to reduce redundancy
-- Declare and define functions
-- Generalize a function with parameters
-- ADD: introduce cout here earlier
-- ADD: strings?
+- styling in openFrameworks
+- understand the painter's algorithm
+
+video content
+
+- Declare and define functions with parameters
 
 ## Day 2
 
-- Use `cout` to log values
 - Use `ofRandom` to produce random numbers in various ranges
-- Draw shapes with different colors; understand how `ofSetColor` fits into painter's algorithm
-- Put variables in `ofApp.h` that persist over the lifetime of the program
-- Use the openFrameworks `setup` function to initialize variables
-- If statements
-- ADD: While loops here
-- For loops
-- Nested for loops (MOVE TO DAY 3?)
-- Use the `sin` function for animation
-- Write functions that return values
-- Understand state updates of the form `x = transform(x)`
-- ADD: Celsius / Fahrenheit example
-- ADD: another example?
-- ADD: Boolean types and logic
-- ADD: More if statements and for loops
-- ADD: introduce while loops here
-- ADD: more for loop drawing problems
+- Use `cout` to log values
+- persistent variables using `ofApp.h` and `setup()`
+- introduction to boolean expressions
+- introduction to loops and making use of the `i` iterator inside the loop
 
+video content
 
+- arrays (c++ vector), how they can relate to each iteration of a loop.
 
 ## Day 3
 
-- Review variables
-  - Life cycle of variable
-  - Variable types
-  - Variables in functions vs. variables in `.h` file
-- Review functions
-  - What is a function?
-  - Parameters
-  - Return values
-  - CHANGE: move function example from day 3 to day 2?
-- Introduce C++ objects as containers for groups of variables
-- While loops (CHANGE: move to day 2)
-- Arrays
-- Vectors
-- average temperature
-- average position w polyline
+- `ofMap()`, sine and cosine and `ofGetElapsedTimef()`
+- if statements
+- using variables to modify other variables (position-velocity)
+- uncover the need for a class, to encapsulate similar-objects.
+- create our own particle class
 
+video content
+
+- custom functions that return
+- nested loops, and how they relate to 2D
 
 ## Day 4
 

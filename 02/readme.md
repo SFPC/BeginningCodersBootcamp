@@ -2,7 +2,7 @@
 
 ## new sketch 04: "random"
 
-- draw a circle with random size (to prevent flicker, see why we have to store the variable?)
+- draw a circle inside draw() with random position or size (see why we have to store the variable?)
 
 - introduction to ofApp.h to store class-wide variables. use setup() to initialize them.
 - introduce `cout` to peek inside of variables.
@@ -28,20 +28,16 @@ now that we know how loops work, we are going to use **for loops** from now on. 
 
 the `i` will be used to change the x-position of the lines, as well as the color.
 
-## new sketch 06: "for-loop-2"
+*challenge: how can we make this gradient larger?*
 
-extend our previous sketch into 2D, we want a color grid now, using nested for-loops.
-
-make a sketch that draws 255x255 one-pixel-sized rectangles in rows and columns.
-
-*challenge: how can we make this square larger?*
+right now the `i` is too-directly mapped to the location. we can use math (`* 2`) to increase the size. why is our for-loop between 0 and 255 to begin with?
 
 ## new sketch 07: "arrays"
 
 arrays are a way of storing a list of variables. it solves the problem for how can we store one variable for every iteration of the loop.
 
-this is probably going to be a video.
-
 ## Homework
 
-make a night sky
+make a starry-night sky. can you make the stars twinkle?
+
+play with loops without using random too, make more regular, geometric kinds of drawings.
