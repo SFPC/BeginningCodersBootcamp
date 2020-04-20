@@ -38,8 +38,8 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 ## Schedule
 
 - [Day 1: Graphics, variables, functions](01/)
-- Day 2: Parameters, returns and conditionals
-- Day 3: Objects, arrays and vectors
+- [Day 2: Loops and arrays](02/)
+- Day 3: Parameters, returns and conditionals
 - Day 4: Polylines and classes
 - Day 5: Review
 
