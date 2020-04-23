@@ -8,6 +8,8 @@ question time.
 
 animate using sine and cosine, which have outputs between -1 and 1. introduce `ofGetElapsedTimef()`.
 
+we are using math functions in *non-traditional* ways. that is good. what else is out there? abs(), fabs(), sqrt(), pow()
+
 have fun with `sin(ofGetElapsedTimef())`, using map for position, colors.
 
 ## new sketch 09: "if-statement"
@@ -32,12 +34,6 @@ expand it by creating an **array of particles**. (this gets really fun when you 
 ## video content: "returning"
 
 functions that return. transform a number `b = transform(a)`.
-
-## video content: "for-loop-2"
-
-extend our previous for-loop-1 sketch into 2D, we want a color grid now, using nested for-loops.
-
-make a sketch that draws colored rectangles in rows and columns, iterating through 2 colors. use map.
 
 ## Homework
 
