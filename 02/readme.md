@@ -1,10 +1,10 @@
 # Bootcamp 02
 
-### Homework review
+### Homework review: show off your results on slack
 
 ### A: colors
 
-this allows us to talk about painters algorithm (can't really demonstrate until colors). last line = "on top". discuss colors with `ofSetColor`, `ofBackground`, `ofFill` and `ofNoFill`, and opacity. demonstrate how the state of the colors wraps around to the beginning of the draw loop. best practices: if a function changes the color, at the end change it back to white, full opacity.
+colors allows us to talk about painters algorithm (can't really demonstrate until colors, we need overlapping shapes). last line of code = "on top". discuss colors with `ofSetColor`, `ofBackground`, `ofFill` and `ofNoFill`, and opacity. demonstrate how the state of the colors wraps around to the beginning of the draw loop. best practices: if a function changes the color, at the end change it back to white, full opacity.
 
 ## new sketch 04: "random"
 
@@ -44,22 +44,23 @@ now that we know how loops work, we are going to use **for loops** from now on.
 
 *challenge: draw a color gradient by drawing a bunch of vertical lines next to one another* the `i` will be used to change the x-position of the lines, as well as the color.
 
-### A: ofMap()
+### ofMap()
 
 *problem: both position and color are tied to the same variable, how can we make this gradient larger in size than 255, without breaking the colors?*
 
 right now the `i` is too-directly mapped to the location. we can use math (`* 2`) to increase the size. why is our for-loop between 0 and 255 to begin with?
 
-## new sketch 07: "arrays"
+## Homework
+
+### Arrays
 
 arrays are a way of storing a list of variables. it solves the problem for how can we store one variable for every iteration of the loop.
 
-## Homework
+### watch this video: [introduction to arrays](https://www.youtube.com/watch?v=6PxIhuwvQ_4)
 
-play with for loops
+your homework is to play with for-loops, arrays, and random together.
 
-make a starry-night sky. can you make the stars twinkle?
+- make a starry-night sky. can you make the stars twinkle?
+- can you make a rainy sky? (this is a little more advanced than stars)
 
-can you make a rainy sky? (this is a little more advanced than stars)
-
-play with loops without using random too, make more regular, geometric kinds of drawings.
+alternatively, try playing with loops and arrays without using random to make more regular, geometric kinds of drawings.
