@@ -40,7 +40,7 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 - [Day 1: Graphics, variables, functions](01/)
 - [Day 2: Loops and arrays](02/)
 - [Day 3: Animations, if-statements, classes](03/)
-- Day 4: OF objects, affine-transforms, 3D
+- [Day 4: OF primitives: points, polylines, paths, data folder](04/)
 - Day 5: event handlers, ofxAddons
 
 ## Day 1
@@ -74,28 +74,27 @@ video content
 - `ofMap()`, sine and cosine and `ofGetElapsedTimef()`
 - if statements
 - using variables to modify other variables (position-velocity)
+- Using the openFrameworks `update` function
 - uncover the need for a class, to encapsulate similar-objects.
 - create our own particle class
 
 video content
 
-- custom functions that return
-- nested loops, and how they relate to 2D
+- c++ classes
 
 ## Day 4
 
-- Use Polylines to draw shapes
-- How to share openFrameworks apps
-- Using the openFrameworks `update` function
-- Basic intro to C++ classes (member variables, functions)
-- Transformations
-- Using pushMatrix / popMatrix to remember transformation state
-- 3D graphics
-- Basic Lighting in openFrameworks
+- ofPoint, ofPolyline, ofPath
+- functions that return
+- type, fonts, and conversion to ofPath
+- nested loops
+- transformations, push / popMatrix
 
 ## Day 5
 
-- Nested transformations
+- 3D
+- lighting
+- nested transformations
 - Perlin noise
 - Keyboard input
 - Using openFrameworks addons

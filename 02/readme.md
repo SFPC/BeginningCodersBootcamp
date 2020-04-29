@@ -1,12 +1,15 @@
 # Bootcamp 02
 
+> topics today:
+> - random 
+
 ### Homework review: show off your results on slack
 
 ### A: colors
 
-colors allows us to talk about painters algorithm (can't really demonstrate until colors, we need overlapping shapes). last line of code = "on top". discuss colors with `ofSetColor`, `ofBackground`, `ofFill` and `ofNoFill`, and opacity. demonstrate how the state of the colors wraps around to the beginning of the draw loop. best practices: if a function changes the color, at the end change it back to white, full opacity.
+Colors allows us to talk about the painters algorithm (can't really demonstrate until colors, we need overlapping shapes). The last line of code = "on top". Introduce `ofSetColor`, `ofBackground`, `ofFill` and `ofNoFill`, opacity, and how grays can be simplified to one number. demonstrate how the state of the colors wraps around to the beginning of the draw loop. best practices: if a function changes the color, at the end change it back to white, full opacity.
 
-## new sketch 04: "random"
+## new sketch 2.01: "random"
 
 for context, show some algorists' work: Molnar, Nees, Mohr, Nake, there was a moment around the use of computational randomness in art.
 
@@ -16,7 +19,7 @@ draw a circle inside draw() with random position or size (see why we have to sto
 - discuss start-end range of ofRandom
 - show them the seed
 
-## new sketch 05: "loops"
+## new sketch 2.02: "loops"
 
 quick overview of boolean variables, and how they can be created as a result of a boolean expression. `5 < 10`
 
@@ -38,7 +41,7 @@ without random, how do we prevent drawing the same shape 100x times on top of it
 
 show how `while(random(10) < 1)` does not do what you probably think it does
 
-## new sketch 06: "for-loop-1"
+## new sketch 2.03: "for-loop"
 
 now that we know how loops work, we are going to use **for loops** from now on.
 

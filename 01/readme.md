@@ -49,4 +49,4 @@ prepare for homework by creating a new project and copy-pasting the contents fro
 your homework is two parts:
 
 1. [watch this video](https://www.youtube.com/watch?v=bNc5wHwXPVM) to learn how to convert your letter-drawing code into a function.
-2. make a new drawing using your letter-drawing function.
+2. make a new drawing using your letter-drawing function. take advantage of how you can easily repeat your letter with different parameters. maybe incorporate `mouseX` or `mouseY`.
