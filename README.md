@@ -40,8 +40,8 @@ Also, download openFrameworks for your given platform: http://openframeworks.cc/
 - [Day 1: Graphics, variables, functions](01/)
 - [Day 2: Loops and arrays](02/)
 - [Day 3: Animations, if-statements, classes](03/)
-- [Day 4: OF primitives: points, polylines, paths, data folder](04/)
-- Day 5: event handlers, ofxAddons
+- [Day 4: OF primitives: ofPoints, ofPolyline, ofImage, assets](04/)
+- [Day 5: ofPixels, recursion, 3D](05/)
 
 ## Day 1
 

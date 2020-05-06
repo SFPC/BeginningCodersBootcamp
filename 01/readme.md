@@ -8,7 +8,7 @@ open with a 20 minute talk about the goals of coding. what is code? [slides](htt
 
 ## new sketch 1.01: "name"
 
-### A: explore
+### introduction
 
 spend 10 minutes learning about and exploring open frameworks drawing functions like line, rect, circle, ellipse.
 
@@ -18,23 +18,23 @@ lessons:
 - different parameters mean different things sometimes, x / width / radius. there are conventions, x comes before y, width before height
 - we can put math inside the parameters: `ofDrawLine(10, 10, 1024 - 10, 768 - 10);` arrive here by drawing a line from one corner to another, but with a little 10px margin.
 
-### B: draw your name
+### draw your name
 
 comment out all your draw code.
 
 *challenge: draw your name. 20 minutes*
 
-### C: draw your name twice
+### draw your name twice
 
 make your name appear again, in another location, translated to the side, below, etc..., wherever you have room (or, allow for overlap if most of the space is already taken)
 
 *challenge: draw your name twice, a copy right next to this one. 5-10 minutes*
 
-### D: variables
+### variables
 
 let's come back together and learn about variables. we have some slides. 20 minutes talk about the life cycle of variables: (1) declaration, (2) assignment, (3) use it, (3) death
 
-back to your name sketch: prepare your code in such a way that the translation was written by adding `+ 300` by typing it out like this (not doing the math yourself).
+back to your name sketch: prepare your code in such a way that the translation was written by adding `+ 300` by typing it out like this (not doing the math yourself). the catch is the `+ 300` will be replaced by the variable.
 
 *challenge: make copies of your name using variables.*
 

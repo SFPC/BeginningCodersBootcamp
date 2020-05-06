@@ -4,10 +4,6 @@
 
 let's wrap up, add gravity, make an array of particles generate on a mouse click, the effect can be anything from welding sparks to fireworks.
 
-### functions that return
-
-modify the Particles sketch to create a function that returns the position (a getter), an ofPoint made with the private float x, y properties.
-
 ## new sketch 4.01: "draw"
 
 introduce popular open frameworks primitives like ofPoint, ofPolyline...
