@@ -1,26 +1,28 @@
 # Bootcamp 01
 
-allow for 30 minutes of technical setup for open frameworks.
+### functions, variables
 
-open with a 20 minute talk about the goals of coding. what is code? [slides](https://docs.google.com/presentation/d/1LyL2s73L5CTtCaYfjDCRjG1mK-9FNm1_mgxFSXcamgQ/edit?usp=sharing)
+begin with the goals of the class. [slides](https://docs.google.com/presentation/d/1LyL2s73L5CTtCaYfjDCRjG1mK-9FNm1_mgxFSXcamgQ/edit?usp=sharing)
 
 ---
 
-## new sketch 1.01: "name"
-
 ### introduction
 
-spend 10 minutes learning about and exploring open frameworks drawing functions like line, rect, circle, ellipse.
+spend 10 minutes looking inside the openFrameworks folder: examples, apps/myApps, use projectGenerator to create a new project.
 
-lessons:
-- draw one ofDrawLine together with some understanding of the (x,y,x,y) pair of endpoints, explore the coordinate system. The Y axis is upside down.
+> new project generator sketch
+
+introduction:
+
+- ofDrawLine, ofDrawRectangle, ofDrawCircle
+- explore the coordinate system. The Y axis is upside down
 - learn basic C++ syntax, like semicolons, case-sensitivity
 - different parameters mean different things sometimes, x / width / radius. there are conventions, x comes before y, width before height
 - we can put math inside the parameters: `ofDrawLine(10, 10, 1024 - 10, 768 - 10);` arrive here by drawing a line from one corner to another, but with a little 10px margin.
 
 ### draw your name
 
-comment out all your draw code.
+comment out those few lines of practice code.
 
 *challenge: draw your name. 20 minutes*
 
@@ -29,6 +31,10 @@ comment out all your draw code.
 make your name appear again, in another location, translated to the side, below, etc..., wherever you have room (or, allow for overlap if most of the space is already taken)
 
 *challenge: draw your name twice, a copy right next to this one. 5-10 minutes*
+
+### colors
+
+Colors allows us to talk about the painters algorithm (can't really demonstrate until colors, we need overlapping shapes). The last line of code = "on top". Introduce `ofSetColor`, `ofBackground`, `ofFill` and `ofNoFill`, opacity, and how grays can be simplified to one number. demonstrate how the state of the colors wraps around to the beginning of the draw loop. best practices: if a function changes the color, at the end change it back to white, full opacity.
 
 ### variables
 
@@ -43,8 +49,6 @@ back to your name sketch: prepare your code in such a way that the translation w
 ## Homework
 
 prepare for homework by creating a new project and copy-pasting the contents from the **name** sketch over.
-
-### new sketch 1.02: "letter-function"
 
 your homework is two parts:
 

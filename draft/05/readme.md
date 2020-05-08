@@ -1,5 +1,7 @@
 # Bootcamp 05
 
+### 3D, pixels, recursion
+
 15 minutes of share work time, 3-4 person groups.
 
 ## going inside of an image. pixels

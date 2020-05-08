@@ -13,4 +13,4 @@ This repo contains the curriculum in detail for every session (since we started 
 - [Spring 2020](2020-04/)
 - [Fall 2019](2019-09/)
 
-The working draft for the next class is located [in its own folder](next-session/). Maintainers, at the beginning of the next class, duplicate this folder and rename it following the ISO date format: year, month, and day depending on what level of specificity is needed.
+The working draft for the next class is located [in its own folder](draft/). Maintainers, at the beginning of the next class, duplicate this folder and rename it following the ISO date format: year, month, and day depending on what level of specificity is needed. Run the class from this folder and all hyperlinks will be perserved.
