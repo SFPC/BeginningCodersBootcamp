@@ -1,17 +1,24 @@
 # Bootcamp 02
 
-split into groups and share homework
+15 minutes, split into groups and share homework
 
 ### animation, sine, map
 
 two ways to approach animation:
 
-- animate a thing based on its previous position. we need the computer to remember; we need an attribute variable in the .h file.
-- there is a whole class of animations where the position (or whatever) is a **calculation** based on the current time. no variables needed!
+1. animate a thing based on its previous position. we need the computer to remember; we need an attribute variable in the .h file.
+2. there is a whole class of animations where the position (or color or whatever) is a **calculation** based on the current time. no variables needed!
 
-start with #2.
+### 1. animation with memory
 
-### sine of elapsed time
+store a circle's position in the .h file; two floats x and y. have it chase the mouse. ease towards the mouse. talk about multiplication, easing.
+
+```c++
+float ease = 0.9;
+x = (x * ease) + (mouseX * (1-ease));
+```
+
+### 2. animation from equations: sine of elapsed time
 
 introduce `cout <<` to peek inside `ofGetElapsedTimef()`. animate a circle moving across the screen.
 
@@ -24,7 +31,7 @@ float y = ofMap(sin(ofGetElapsedTimef(), -1, 1, 0, ofGetHeight()),
 ofDrawCircle(ofGetWidth() / 2, y, 10);
 ```
 
-talk about sine not in terms of trigonometry but simply as a [function that has an input and output](sine.gif) (*any* number ➜ between -1 and 1). work your way up to using ofMap.
+We aren't using sine as in trigonometry, but simply as a [function that has an input and output](sine.gif) (*any* number ➜ between -1 and 1). work your way up to using ofMap.
 
 now map the the sine of elapsed time to colors, very simple, the background color.
 
@@ -33,18 +40,11 @@ float color = ofMap(sin(ofGetElapsedTimef()), -1, 1, 0, 255);
 ofBackground(color);
 ```
 
-learn about phase. make these two sine of elapsed times oscillate at different rates.
-
-### animation with memory
-
-store a circle's position in the .h file; two floats x and y. have it chase the mouse. ease towards the mouse. talk about multiplication, easing.
-
-```c++
-float ease = 0.9;
-x = (x * ease) + (mouseX * (1-ease));
-```
+with both of these in the same sketch, learn about phase. make these two sine of elapsed times oscillate at different rates.
 
 ### random
+
+`ofGetElapsedTimef()` and `ofRandom()`, two ways of getting a different number each frame. Introduce time before random as it more represents classical animation.
 
 for context, show some algorists' work: Molnar, Nees, Mohr, Nake, computer pseudo-randomness kind of had a moment in these decades.
 

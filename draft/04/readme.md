@@ -1,5 +1,7 @@
 # Bootcamp 04
 
+15 minutes, split into groups and share homework
+
 ### branching, classes
 
 Here is an example of an animation based on asking the computer to *remember* the last position. create the bouncing screen saver (bouncing DVD logo). key take aways:
@@ -12,13 +14,13 @@ x = x + 1;
 // here, check if it went off screen
 ```
 
-we need if statements to catch the ball from moving off screen. an if statement is like our while loop where the () contains a boolean expression, and only runs if true.
+we need if-statements to catch the ball from moving off screen. an if statement is like our while loop where the () contains a boolean expression, and only runs if true.
 
 ```c++
 x = x + 1;
 
 if (x > ofGetWidth()) {
-	// what here?
+  // what here?
 }
 ```
 
@@ -39,7 +41,7 @@ now, what if we need `ofBackground` to be on? *we need to store **all** of the p
 
 ### polyline
 
-recode our draw app with an ofPolyline. show off some tricks that polyline can do, like smoothing.
+recode our draw app with an ofPolyline. show off some tricks that polyline can do, like smoothing. Polylines are great, and are present in other places like fonts (see **typography** section below).
 
 ## ofImage and transforms
 
@@ -55,9 +57,11 @@ Many different variables in this bounce sketch conceptually relate to the same t
 
 re-code our bounce project into a custom particle class. [the solution is in this video](https://www.youtube.com/watch?v=efpIiXcy5tM).
 
-expand it by creating an **array of particles**. (this gets really fun when you add gravity!) make an array of particles generate on a mouse click to look like welding sparks or fireworks.
+expand upon the assignment by creating an **array of particles**. (this gets really fun when you add gravity!) make an array of particles generate on a mouse click to look like welding sparks or fireworks.
 
-## typography
+can you add parameters to your class, giving each particle a unique direction, speed, color?
+
+### typography
 
 bonus video content, [getting a polyline from a font](https://www.youtube.com/watch?v=A-_0AhArveM).
 

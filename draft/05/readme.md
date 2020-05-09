@@ -1,5 +1,7 @@
 # Bootcamp 05
 
+15 minutes, split into groups and share homework
+
 ### 3D, pixels, recursion
 
 15 minutes of share work time, 3-4 person groups.
@@ -10,14 +12,14 @@ load an image and read its pixels with `getColor`, learn about the `ofColor` obj
 
 ```c++
 void ofApp::draw(){
-    ofBackground(0);
-    img.draw(0,0);
-    for (int i = 0; i < img.getWidth(); i+=10){
-        for (int j = 0; j < img.getHeight(); j+=10){
-            float brightness = img.getColor(i,j).getBrightness();
-            ofDrawCircle(img.getWidth()+i, j, ofMap(brightness, 0, 255, 0, 5));
-        }
+  ofBackground(0);
+  img.draw(0,0);
+  for (int i = 0; i < img.getWidth(); i+=10){
+    for (int j = 0; j < img.getHeight(); j+=10){
+      float brightness = img.getColor(i,j).getBrightness();
+      ofDrawCircle(img.getWidth()+i, j, ofMap(brightness, 0, 255, 0, 5));
     }
+  }
 }
 ```
 
@@ -40,15 +42,15 @@ talk about how recursion is similar to and unlike a loop. we need to repeat for 
 
 ```C++
 void ofApp::splitRectangle(float x, float y, float width, float height){
-    if (width > 1 && ofRandom(0, 1) > 0.5){
-        splitRectangle(x          , y           , width/2, height/2);
-        splitRectangle(x + width/2, y           , width/2, height/2);
-        splitRectangle(x + width/2, y + height/2, width/2, height/2);
-        splitRectangle(x          , y + height/2, width/2, height/2);
-    } else {
-        ofDrawRectangle(x,y,width, height);
-    }
-    //ofDrawRectangle(x,y,width, height);
+  if (width > 1 && ofRandom(0, 1) > 0.5){
+    splitRectangle(x          , y           , width/2, height/2);
+    splitRectangle(x + width/2, y           , width/2, height/2);
+    splitRectangle(x + width/2, y + height/2, width/2, height/2);
+    splitRectangle(x          , y + height/2, width/2, height/2);
+  } else {
+    ofDrawRectangle(x,y,width, height);
+  }
+  //ofDrawRectangle(x,y,width, height);
 }
 ```
 
@@ -60,17 +62,17 @@ Rotate the grass-colored plane to lie flat. discuss the three axes parameters of
 
 ```c++
 void ofApp::draw(){
-    cam.begin();
-    ofSetColor(100, 20, 10);  // brown
-    ofDrawBox(0, 50, 0, 100, 100, 100);
-    
-    ofPushMatrix();
-        ofSetColor(50, 190, 10);  // green
-        ofRotateDeg(90, 1, 0, 0);
-        // ground plane
-        ofDrawRectangle(-250, -250, 500, 500);
-    ofPopMatrix();
-    cam.end();
+  cam.begin();
+  ofSetColor(100, 20, 10);  // brown
+  ofDrawBox(0, 50, 0, 100, 100, 100);
+  
+  ofPushMatrix();
+    ofSetColor(50, 190, 10);  // green
+    ofRotateDeg(90, 1, 0, 0);
+    // ground plane
+    ofDrawRectangle(-250, -250, 500, 500);
+  ofPopMatrix();
+  cam.end();
 }
 ```
 
